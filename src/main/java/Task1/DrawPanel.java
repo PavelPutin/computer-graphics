@@ -14,8 +14,8 @@ public class DrawPanel extends JPanel {
         super.paint(gr);
         Graphics2D g = (Graphics2D) gr;
 
-        String text = "Happy Birthday!";
-        drawText(g, text, 50, 40, 600, 100, true);
+        String text = "Text";
+        drawText(g, text, 50, 40, 400, 200, true);
     }
 
     private void drawText(Graphics2D g, String text, int x, int y, int width, int height, boolean verbose) {
@@ -33,16 +33,12 @@ public class DrawPanel extends JPanel {
         }
 
         g.setFont(new Font("Tahoma", Font.PLAIN, 50));
-        int gap = width / text.length();
-
-        double startAngle = Math.PI/4;
-        double endAngle = -Math.PI/4;
-        double angleStep = (endAngle - startAngle) / (text.length() - 1);
+        double angleGap = Math.PI / text.length();
 
         for (int i = 0; i < text.length(); i++) {
-            int tx = i * gap;
+            int tx = (int) (width / 2 * -Math.cos(i * angleGap) + width / 2);
             if (text.length() % 2 == 0 && i >= text.length() / 2) {
-                tx = (i + 1) * gap + 1;
+                tx = (int) (width / 2 * -Math.cos((i + 1) * angleGap) + width / 2);
             }
             int ty = arcFormula(tx, width, height);
             g.translate(tx + x, ty + y);
