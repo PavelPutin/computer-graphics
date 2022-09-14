@@ -43,7 +43,6 @@ public class DrawPanel extends JPanel {
             int ty = arcFormula(tx, width, height);
             g.translate(tx + x, ty + y);
 
-//            double theta = i * angleStep + startAngle;
             double theta = angle(tx, width, height);
             g.rotate(theta);
 
@@ -73,7 +72,7 @@ public class DrawPanel extends JPanel {
 
     private double angle(int x, int width, int height) {
         double w = (double) width / 2;
-        double h = (double) height;
+        double h = height;
 
         double tan = -(h * (x - w)) / (w * Math.sqrt(Math.pow(w, 2) - Math.pow((x - w), 2)));
         return Math.atan(tan);
