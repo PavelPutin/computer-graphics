@@ -16,8 +16,13 @@ public class DrawPanel extends JPanel {
         super.paint(gr);
         Graphics2D g = (Graphics2D) gr;
 
-        ArcText at = new ArcText("Happy birthday!", 50, 40, 400, 200, true);
+        g.setFont(new Font("Tahoma", Font.BOLD, 45));
+        ArcText at = new ArcText("Happy birthday!", 50, 40, 400, 200);
         at.draw(g);
+
+        g.setFont(new Font("Comic Sans MS", Font.ITALIC, 35));
+        ArcText at1 = new ArcText("С днём рождения!", 50, 200, 600, 50);
+        at1.draw(g);
     }
 
 }

@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Создал для удобства классы отрисоки осей координат">
+    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Провёл рефакторинг класса ArcText">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663242499199</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Провёл рефакторинг класса ArcText">
+      <created>1663243364183</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1663243364183</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,6 +171,7 @@
     <MESSAGE value="Текст в арке распределяется по угловой мере" />
     <MESSAGE value="Перенёс код рисования текста-арки в отдельный класс" />
     <MESSAGE value="Создал для удобства классы отрисоки осей координат" />
-    <option name="LAST_COMMIT_MESSAGE" value="Создал для удобства классы отрисоки осей координат" />
+    <MESSAGE value="Провёл рефакторинг класса ArcText" />
+    <option name="LAST_COMMIT_MESSAGE" value="Провёл рефакторинг класса ArcText" />
   </component>
 </project>

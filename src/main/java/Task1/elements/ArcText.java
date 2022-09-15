@@ -7,14 +7,44 @@ public class ArcText {
     private int x, y, width, height;
     private boolean verbose;
     private double angleGap;
+    private double startAngle;
+
+    public double getStartAngle() {
+        return startAngle;
+    }
+
+    public void setStartAngle(double startAngle) {
+        if (startAngle <= 0 || startAngle >= Math.PI) {
+            throw new IllegalArgumentException("Недопустимое значение угла для текста-арки");
+        }
+        this.startAngle = startAngle;
+    }
+
+    public double getEndAngle() {
+        return endAngle;
+    }
+
+    public void setEndAngle(double endAngle) {
+        if (endAngle <= 0 || endAngle >= Math.PI) {
+            throw new IllegalArgumentException("Недопустимое значение угла для текста-арки");
+        }
+        this.endAngle = endAngle;
+    }
+
+    private double endAngle;
 
     public ArcText(String text, int x, int y, int width, int height, boolean verbose) {
-        setText(text);
+        this.text = text;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.verbose = verbose;
+
+        this.startAngle = Math.PI / 12;
+        this.endAngle = 11 * Math.PI / 12;
+
+        getAngleGap();
     }
 
     public String getText() {
@@ -23,7 +53,11 @@ public class ArcText {
 
     public void setText(String text) {
         this.text = text;
-        angleGap = Math.PI / (text.length() - 1);
+        getAngleGap();
+    }
+
+    private void getAngleGap() {
+        angleGap = (endAngle - startAngle) / (text.length() - 1);
     }
 
     public int getX() {
@@ -108,11 +142,7 @@ public class ArcText {
     }
 
     private int getTx(int i) {
-        int result = (int) (width / 2 * -Math.cos(i * angleGap) + width / 2);
-        if (text.length() % 2 == 0 && i >= text.length() / 2) {
-            result = getTx(i + 1);
-        }
-        return result;
+        return (int) (width / 2 * -Math.cos(i * angleGap + startAngle) + width / 2);
     }
 
     private void drawSupportiveArc(Graphics2D g) {
