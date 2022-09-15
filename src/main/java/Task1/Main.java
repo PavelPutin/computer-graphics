@@ -3,10 +3,13 @@ package Task1;
 import javax.swing.*;
 
 public class Main {
+    public static final int WINDOW_WIDTH = 800;
+    public static final int WINDOW_HEIGHT = 600;
+
     public static void main(String[] args) {
         MainFrame mf = new MainFrame();
         mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mf.setSize(800, 600);
+        mf.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         mf.setVisible(true);
     }
 }

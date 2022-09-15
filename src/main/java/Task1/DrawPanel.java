@@ -4,11 +4,13 @@ import Task1.elements.ArcText;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.GeneralPath;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class DrawPanel extends JPanel {
+    private final ArcText greeting;
+
     public DrawPanel() {
+        int greetingX = 100;
+        greeting = new ArcText("С днём рождения!", greetingX, 50, Main.WINDOW_WIDTH - 2 * greetingX, 50);
     }
 
     @Override
@@ -16,13 +18,12 @@ public class DrawPanel extends JPanel {
         super.paint(gr);
         Graphics2D g = (Graphics2D) gr;
 
-        g.setFont(new Font("Tahoma", Font.BOLD, 45));
-        ArcText at = new ArcText("Happy birthday!", 50, 40, 400, 200);
-        at.draw(g);
-
+        Font oldFont = g.getFont();
         g.setFont(new Font("Comic Sans MS", Font.ITALIC, 35));
-        ArcText at1 = new ArcText("С днём рождения!", 50, 200, 600, 50);
-        at1.draw(g);
+        greeting.draw(g);
+        g.setFont(oldFont);
+
+
     }
 
 }
