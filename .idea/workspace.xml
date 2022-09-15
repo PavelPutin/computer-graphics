@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Перенёс код рисования текста-арки в отдельный класс">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Axe.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/AxeX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/AxeY.java" afterDir="false" />
+    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Создал для удобства классы отрисоки осей координат">
       <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663241874700</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Создал для удобства классы отрисоки осей координат">
+      <created>1663242499199</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1663242499199</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -157,6 +161,7 @@
     <MESSAGE value="Написал прототип текста-арки" />
     <MESSAGE value="Текст в арке распределяется по угловой мере" />
     <MESSAGE value="Перенёс код рисования текста-арки в отдельный класс" />
-    <option name="LAST_COMMIT_MESSAGE" value="Перенёс код рисования текста-арки в отдельный класс" />
+    <MESSAGE value="Создал для удобства классы отрисоки осей координат" />
+    <option name="LAST_COMMIT_MESSAGE" value="Создал для удобства классы отрисоки осей координат" />
   </component>
 </project>

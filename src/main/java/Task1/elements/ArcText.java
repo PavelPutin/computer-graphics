@@ -6,9 +6,10 @@ public class ArcText {
     private String text;
     private int x, y, width, height;
     private boolean verbose;
+    private double angleGap;
 
     public ArcText(String text, int x, int y, int width, int height, boolean verbose) {
-        this.text = text;
+        setText(text);
         this.x = x;
         this.y = y;
         this.width = width;
@@ -22,6 +23,7 @@ public class ArcText {
 
     public void setText(String text) {
         this.text = text;
+        angleGap = Math.PI / (text.length() - 1);
     }
 
     public int getX() {
@@ -72,51 +74,67 @@ public class ArcText {
         Color oldColor = g.getColor();
 
         if (verbose) {
-            g.setColor(Color.RED);
-            g.drawRect(x, y, width, height);
-            g.setColor(oldColor);
-
-            g.setColor(Color.CYAN);
-            g.drawArc(x, y - height, width, 2 * height, 180, 180);
-            g.setColor(oldColor);
+            drawBoundary(g);
+            drawSupportiveArc(g);
         }
 
-        double angleGap = Math.PI / (text.length() - 1);
-
         for (int i = 0; i < text.length(); i++) {
-            int tx = (int) (width / 2 * -Math.cos(i * angleGap) + width / 2);
-            if (text.length() % 2 == 0 && i >= text.length() / 2) {
-                tx = (int) (width / 2 * -Math.cos((i + 1) * angleGap) + width / 2);
-            }
-            int ty = arcFormula(tx, width, height);
-            g.translate(tx + x, ty + y);
-
-            double theta = angle(tx, width, height);
-            g.rotate(theta);
-
-            if (verbose) {
-                Axe axeX = new AxeX(g.getFont().getSize());
-                axeX.draw(g);
-
-                Axe axeY = new AxeY(g.getFont().getSize());
-                axeY.draw(g);
-            }
-
-            g.drawString(String.valueOf(text.charAt(i)), 0, 0);
-            g.rotate(-theta);
-
-            g.translate(-tx - x, -ty - y);
+            drawCharAt(g, i);
         }
 
         g.setColor(oldColor);
     }
 
-    private int arcFormula(int x, int width, int height) {
-        int widthRadius = width / 2;
-        return (int) (height * Math.sqrt(Math.pow(widthRadius, 2) - Math.pow((x - widthRadius), 2)) / widthRadius);
+    private void drawCharAt(Graphics2D g, int i) {
+        int tx = getTx(i);
+        int ty = arcFormula(tx);
+        double theta = getAngleForCharacter(tx);
+
+        g.translate(tx + x, ty + y);
+        g.rotate(theta);
+
+        if (verbose) {
+            Axe axeX = new AxeX(g.getFont().getSize());
+            axeX.draw(g);
+
+            Axe axeY = new AxeY(g.getFont().getSize());
+            axeY.draw(g);
+        }
+
+        g.drawString(String.valueOf(text.charAt(i)), 0, 0);
+
+        g.rotate(-theta);
+        g.translate(-tx - x, -ty - y);
     }
 
-    private double angle(int x, int width, int height) {
+    private int getTx(int i) {
+        int result = (int) (width / 2 * -Math.cos(i * angleGap) + width / 2);
+        if (text.length() % 2 == 0 && i >= text.length() / 2) {
+            result = getTx(i + 1);
+        }
+        return result;
+    }
+
+    private void drawSupportiveArc(Graphics2D g) {
+        Color oldColor = g.getColor();
+        g.setColor(Color.CYAN);
+        g.drawArc(x, y - height, width, 2 * height, 180, 180);
+        g.setColor(oldColor);
+    }
+
+    private void drawBoundary(Graphics2D g) {
+        Color oldColor = g.getColor();
+        g.setColor(Color.RED);
+        g.drawRect(x, y, width, height);
+        g.setColor(oldColor);
+    }
+
+    private int arcFormula(int x) {
+        int w = width / 2;
+        return (int) (height * Math.sqrt(Math.pow(w, 2) - Math.pow((x - w), 2)) / w);
+    }
+
+    private double getAngleForCharacter(int x) {
         double w = (double) width / 2;
         double h = height;
 
