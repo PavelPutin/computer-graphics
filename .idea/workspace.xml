@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Написал прототип текста-арки">
+    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Текст в арке распределяется по угловой мере">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" afterDir="false" />
     </list>
@@ -97,7 +98,35 @@
       <option name="project" value="LOCAL" />
       <updated>1663162864957</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Текст в арке распределяется по угловой мере">
+      <created>1663174336206</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1663174336206</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Текст в арке распределяется по угловой мере">
+      <created>1663174343519</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1663174343519</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Текст в арке распределяется по угловой мере">
+      <created>1663174360187</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1663174360187</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Текст в арке распределяется по угловой мере">
+      <created>1663174773722</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1663174773722</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -117,6 +146,7 @@
     <MESSAGE value="Добавил главное окно" />
     <MESSAGE value="Создана DrawPanel для вывода графической информации" />
     <MESSAGE value="Написал прототип текста-арки" />
-    <option name="LAST_COMMIT_MESSAGE" value="Написал прототип текста-арки" />
+    <MESSAGE value="Текст в арке распределяется по угловой мере" />
+    <option name="LAST_COMMIT_MESSAGE" value="Текст в арке распределяется по угловой мере" />
   </component>
 </project>
