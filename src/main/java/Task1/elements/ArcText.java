@@ -16,13 +16,60 @@ public class ArcText {
         this.verbose = verbose;
     }
 
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public boolean isVerbose() {
+        return verbose;
+    }
+
+    public void setVerbose(boolean verbose) {
+        this.verbose = verbose;
+    }
+
     public ArcText(String text, int x, int y, int width, int height) {
         this(text, x, y, width, height, false);
     }
 
     public void draw(Graphics2D g) {
         Color oldColor = g.getColor();
-        Font oldFont = g.getFont();
 
         if (verbose) {
             g.setColor(Color.RED);
@@ -34,7 +81,6 @@ public class ArcText {
             g.setColor(oldColor);
         }
 
-        g.setFont(new Font("Tahoma", Font.PLAIN, 50));
         double angleGap = Math.PI / (text.length() - 1);
 
         for (int i = 0; i < text.length(); i++) {
@@ -49,12 +95,11 @@ public class ArcText {
             g.rotate(theta);
 
             if (verbose) {
-                g.setColor(Color.BLUE);
-                g.drawLine(0, 0, g.getFont().getSize(), 0);
+                Axe axeX = new AxeX(g.getFont().getSize());
+                axeX.draw(g);
 
-                g.setColor(Color.GREEN);
-                g.drawLine(0, 0, 0, g.getFont().getSize());
-                g.setColor(oldColor);
+                Axe axeY = new AxeY(g.getFont().getSize());
+                axeY.draw(g);
             }
 
             g.drawString(String.valueOf(text.charAt(i)), 0, 0);
@@ -64,7 +109,6 @@ public class ArcText {
         }
 
         g.setColor(oldColor);
-        g.setFont(oldFont);
     }
 
     private int arcFormula(int x, int width, int height) {

@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Текст в арке распределяется по угловой мере">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" afterDir="false" />
+    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Перенёс код рисования текста-арки в отдельный класс">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Axe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/AxeX.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/AxeY.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +34,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -126,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663174773722</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Перенёс код рисования текста-арки в отдельный класс">
+      <created>1663241874700</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1663241874700</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +156,7 @@
     <MESSAGE value="Создана DrawPanel для вывода графической информации" />
     <MESSAGE value="Написал прототип текста-арки" />
     <MESSAGE value="Текст в арке распределяется по угловой мере" />
-    <option name="LAST_COMMIT_MESSAGE" value="Текст в арке распределяется по угловой мере" />
+    <MESSAGE value="Перенёс код рисования текста-арки в отдельный класс" />
+    <option name="LAST_COMMIT_MESSAGE" value="Перенёс код рисования текста-арки в отдельный класс" />
   </component>
 </project>
