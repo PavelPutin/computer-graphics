@@ -17,19 +17,18 @@ public class CakeTin {
     }
 
     public void draw(Graphics2D g) {
-        Color oldColor = g.getColor();
+        Color old = g.getColor();
         g.setColor(color);
         g.fillOval(x, y + height - diameter, width, diameter);
         g.fillRect(x, y + diameter / 2, width, height - diameter);
         g.fillOval(x, y, width, diameter);
+        g.setColor(old);
+    }
 
-        if (verbose) {
-            g.setColor(Color.BLACK);
-            g.drawOval(x, y + height - diameter, width, diameter);
-            g.drawRect(x, y + width / 8, width, height - diameter);
-            g.drawOval(x, y, width, diameter);
-        }
-
-        g.setColor(oldColor);
+    public void drawVerbose(Graphics2D g) {
+        g.setColor(Color.BLACK);
+        g.drawOval(x, y + height - diameter, width, diameter);
+        g.drawRect(x, y + width / 8, width, height - diameter);
+        g.drawOval(x, y, width, diameter);
     }
 }

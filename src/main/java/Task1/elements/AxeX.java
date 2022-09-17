@@ -9,11 +9,11 @@ public class AxeX extends Axe {
 
     @Override
     public void draw(Graphics2D g) {
-        Color oldColor = g.getColor();
+        Color old = g.getColor();
         g.setColor(getColor());
 
         g.drawLine(0, 0, getLength(), 0);
 
-        g.setColor(oldColor);
+        g.setColor(old);
     }
 }

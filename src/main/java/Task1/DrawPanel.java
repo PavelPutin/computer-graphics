@@ -29,5 +29,6 @@ public class DrawPanel extends JPanel {
         g.setFont(oldFont);
 
         cake.draw(g);
+        cake.drawVerbose(g);
     }
 }
