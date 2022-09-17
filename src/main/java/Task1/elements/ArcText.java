@@ -108,7 +108,7 @@ public class ArcText {
         Color oldColor = g.getColor();
 
         if (verbose) {
-            drawBoundary(g);
+            DrawUtils.drawBoundary(g, x, y, width, height);
             drawSupportiveArc(g);
         }
 
@@ -149,13 +149,6 @@ public class ArcText {
         Color oldColor = g.getColor();
         g.setColor(Color.CYAN);
         g.drawArc(x, y - height, width, 2 * height, 180, 180);
-        g.setColor(oldColor);
-    }
-
-    private void drawBoundary(Graphics2D g) {
-        Color oldColor = g.getColor();
-        g.setColor(Color.RED);
-        g.drawRect(x, y, width, height);
         g.setColor(oldColor);
     }
 
