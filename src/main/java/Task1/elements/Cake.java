@@ -2,12 +2,14 @@ package Task1.elements;
 
 import java.awt.*;
 import java.awt.geom.GeneralPath;
+import java.awt.image.TileObserver;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Cake {
-    private int x, y, width, height;
+    private int x, y, width, height, diameter;
     private boolean verbose;
-    private int diameter;
+
+    private CakeTin tin;
 
     private final Color cakeColor = new Color(42, 11, 8);
     private final Color creamColor = new Color(218, 209, 210);
@@ -16,14 +18,16 @@ public class Cake {
     private int min;
     private int max;
 
-    public Cake(int x, int y, int width, int height, boolean verbose) {
+    public Cake(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.verbose = verbose;
 
+        verbose = false;
         diameter = width / 4;
+        tin = new CakeTin(x, y, width, height, diameter, cakeColor);
+
         creamParts = 8;
         min = diameter + 4;
         max = height - diameter - 4;
@@ -32,7 +36,7 @@ public class Cake {
     public void draw(Graphics2D g) {
         Color oldColor = g.getColor();
 
-        drawTins(g); // корж
+        tin.draw(g); // корж
         drawCream(g);
 
         if (verbose) {
@@ -44,22 +48,8 @@ public class Cake {
             g.drawLine(x, y + max, x + width, y + max);
             g.setColor(creamColor);
 
-            g.setStroke(new BasicStroke(1));
-            g.setColor(Color.BLACK);
-            g.drawOval(x, y + height - diameter, width, diameter);
-            g.drawRect(x, y + width / 8, width, height - diameter);
-            g.drawOval(x, y, width, diameter);
         }
 
-        g.setColor(oldColor);
-    }
-
-    private void drawTins(Graphics2D g) {
-        Color oldColor = g.getColor();
-        g.setColor(cakeColor);
-        g.fillOval(x, y + height - diameter, width, diameter);
-        g.fillRect(x, y + diameter / 2, width, height - diameter);
-        g.fillOval(x, y, width, diameter);
         g.setColor(oldColor);
     }
 
@@ -101,6 +91,47 @@ public class Cake {
 
     private int randInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
+    }
+
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public boolean isVerbose() {
+        return verbose;
+    }
+
+    public void setVerbose(boolean verbose) {
+        this.verbose = verbose;
     }
 
 }

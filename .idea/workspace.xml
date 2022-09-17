@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Написал прототип тортика">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Cake.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/DrawUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Перенёс код рисования торта в отдельный класс">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/CakeTin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/Cake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Cake.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663248971065</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Перенёс код рисования торта в отдельный класс">
+      <created>1663414105254</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1663414105254</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -198,6 +203,7 @@
     <MESSAGE value="Добавил угловые отступы для текста" />
     <MESSAGE value="Сделал надпись с поздравлением" />
     <MESSAGE value="Написал прототип тортика" />
-    <option name="LAST_COMMIT_MESSAGE" value="Написал прототип тортика" />
+    <MESSAGE value="Перенёс код рисования торта в отдельный класс" />
+    <option name="LAST_COMMIT_MESSAGE" value="Перенёс код рисования торта в отдельный класс" />
   </component>
 </project>

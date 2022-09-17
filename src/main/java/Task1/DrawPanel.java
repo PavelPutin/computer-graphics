@@ -15,7 +15,7 @@ public class DrawPanel extends JPanel {
     public DrawPanel() {
         int greetingX = 100;
         greeting = new ArcText("С днём рождения!", greetingX, 50, Main.WINDOW_WIDTH - 2 * greetingX, 50);
-        cake = new Cake(Main.WINDOW_WIDTH / 4, 150, 400, 350, false);
+        cake = new Cake(Main.WINDOW_WIDTH / 4, 150, 400, 350);
     }
 
     @Override
