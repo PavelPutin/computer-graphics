@@ -50,6 +50,7 @@ public class DrawPanel extends JPanel {
 
         if (verbose) {
             greeting.drawVerbose(g);
+            cloud.drawVerbose(g);
             cake.drawVerbose(g);
         }
     }

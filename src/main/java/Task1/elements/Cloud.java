@@ -3,11 +3,13 @@ package Task1.elements;
 import Task1.MathUtils;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Cloud {
     private int x, y, width, height, layersNumber;
     private int[] radiusWidth, radiusHeight;
     private int randomShiftX, randomShiftY;
+    private java.util.List<CloudPart> parts;
 
     public Cloud(int x, int y, int width, int height, int layersNumber) {
         this.x = x;
@@ -16,8 +18,32 @@ public class Cloud {
         this.height = height;
         this.layersNumber = layersNumber;
 
-        randomShiftX = randomShiftY = 10;
+        parts = new ArrayList<>();
+        randomShiftX = randomShiftY = 15;
         setDiameters();
+
+        for (int i = 0; i < layersNumber; i++) {
+            double step = Math.PI / (12 * (layersNumber - i));
+            int initialPartRadius = width / layersNumber + i;
+
+            int grayComponent = 255 - 5 * i;
+
+            for (double angle = 0f; Math.abs(2 * Math.PI - angle) >= 1e-6; angle += step) {
+                int partX = (int) (radiusWidth[i] * Math.cos(angle) + this.x + width / 2);
+                partX += MathUtils.randInt(-randomShiftX, randomShiftX);
+                int partY = (int) (radiusHeight[i] * Math.sin(angle) + this.y + height / 2);
+                partY += MathUtils.randInt(-randomShiftY, randomShiftY);
+
+                int realPartRadius = initialPartRadius + MathUtils.randInt(-5, 5);
+                if (Math.PI <= angle && angle <= 2 * Math.PI) {
+                    realPartRadius = initialPartRadius - 10 + MathUtils.randInt(-5, 5);
+                }
+                int realGrayComponent = Math.min(grayComponent + MathUtils.randInt(-3, 3), 255);
+
+                Color partColor = new Color(realGrayComponent, realGrayComponent, realGrayComponent);
+                parts.add(new CloudPart(partX - realPartRadius / 2, partY - realPartRadius / 2, realPartRadius, realPartRadius, partColor));
+            }
+        }
     }
 
     private void setDiameters() {
@@ -32,27 +58,8 @@ public class Cloud {
     public void draw(Graphics2D g) {
         Color old = g.getColor();
 
-        for (int i = 0; i < layersNumber; i++) {
-            double step = Math.PI / (12 * (layersNumber - i));
-            int initialPartRadius = width / layersNumber + i;
-
-            int grayComponent = 255 - 5 * i;
-
-            for (double angle = 0f; Math.abs(2 * Math.PI - angle) >= 1e-6; angle += step) {
-                int x = (int) (radiusWidth[i] * Math.cos(angle) + this.x + width / 2);
-                x += MathUtils.randInt(-randomShiftX, randomShiftX);
-                int y = (int) (radiusHeight[i] * Math.sin(angle) + this.y + height / 2);
-                y += MathUtils.randInt(-randomShiftY, randomShiftY);
-                new Point(x, y, 5, Color.BLUE).draw(g);
-
-                int realPartRadius = initialPartRadius + MathUtils.randInt(-5, 5);
-                int realGrayComponent = Math.min(grayComponent + MathUtils.randInt(-3, 3), 255);
-                g.setColor(new Color(realGrayComponent, realGrayComponent, realGrayComponent));
-                g.fillOval(x - realPartRadius / 2, y - realPartRadius / 2, realPartRadius, realPartRadius);
-
-                /*g.setColor(old);
-                g.drawOval(x - realPartRadius / 2, y - realPartRadius / 2, realPartRadius, realPartRadius);*/
-            }
+        for (CloudPart cp : parts) {
+            cp.draw(g);
         }
 
         g.setColor(old);
@@ -60,7 +67,9 @@ public class Cloud {
 
     public void drawVerbose(Graphics2D g) {
         Color old = g.getColor();
-
+        for (int i = 0; i < layersNumber; i++) {
+            g.drawOval(this.x + width / 2 - radiusWidth[i], this.y + height / 2 - radiusHeight[i], 2 * radiusWidth[i], 2 * radiusHeight[i]);
+        }
         g.setColor(old);
     }
 }
