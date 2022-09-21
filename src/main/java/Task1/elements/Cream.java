@@ -45,8 +45,6 @@ public class Cream {
             curveX[i] = randInt(curveX[i - 1] + 5, curveX[i + 1] - 5);
             curveY[i] = randInt(Math.max(curveY[i - 1], curveY[i + 1]), y + max);
             if (k++ % 2 != 0) {
-                System.out.println(Math.min(curveY[i - 1], curveY[i + 1]));
-                System.out.println(y + min);
                 curveY[i] = randInt(y + min, Math.min(curveY[i - 1], curveY[i + 1]));
             }
         }

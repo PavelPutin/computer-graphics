@@ -8,6 +8,8 @@ public class ArcText {
     private double angleGap;
     private double startAngle;
     private double endAngle;
+    private int[] txs, tys;
+    private double[] thetas;
 
     public ArcText(String text, int x, int y, int width, int height) {
         this.text = text;
@@ -18,6 +20,10 @@ public class ArcText {
 
         this.startAngle = Math.PI / 12;
         this.endAngle = 11 * Math.PI / 12;
+
+        txs = new int[text.length()];
+        tys = new int[text.length()];
+        thetas = new double[text.length()];
 
         getAngleGap();
     }
@@ -41,11 +47,19 @@ public class ArcText {
         DrawUtils.drawBoundary(g, x, y, width, height);
         drawSupportiveArc(g);
 
-        Axe axeX = new AxeX(g.getFont().getSize());
-        axeX.draw(g);
+        for (int i = 0; i < text.length(); i++) {
+            g.translate(txs[i] + x, tys[i] + y);
+            g.rotate(thetas[i]);
 
-        Axe axeY = new AxeY(g.getFont().getSize());
-        axeY.draw(g);
+            Axe axeX = new AxeX(25);
+            axeX.draw(g);
+
+            Axe axeY = new AxeY(25);
+            axeY.draw(g);
+
+            g.rotate(-thetas[i]);
+            g.translate(-txs[i] - x, -tys[i] - y);
+        }
         g.setColor(old);
     }
 
@@ -55,6 +69,9 @@ public class ArcText {
 
     public void setText(String text) {
         this.text = text;
+        txs = new int[text.length()];
+        tys = new int[text.length()];
+        thetas = new double[text.length()];
         getAngleGap();
     }
 
@@ -113,17 +130,17 @@ public class ArcText {
     }
 
     private void drawCharAt(Graphics2D g, int i) {
-        int tx = getTx(i);
-        int ty = arcFormula(tx);
-        double theta = getAngleForCharacter(tx);
+        txs[i] = getTx(i);
+        tys[i] = arcFormula(txs[i]);
+        thetas[i] = getAngleForCharacter(txs[i]);
 
-        g.translate(tx + x, ty + y);
-        g.rotate(theta);
+        g.translate(txs[i] + x, tys[i] + y);
+        g.rotate(thetas[i]);
 
         g.drawString(String.valueOf(text.charAt(i)), 0, 0);
 
-        g.rotate(-theta);
-        g.translate(-tx - x, -ty - y);
+        g.rotate(-thetas[i]);
+        g.translate(-txs[i] - x, -tys[i] - y);
     }
 
     private int getTx(int i) {

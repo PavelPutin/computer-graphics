@@ -5,15 +5,16 @@ import Task1.elements.Cake;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.GeneralPath;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class DrawPanel extends JPanel {
     private final ArcText greeting;
     private final Cake cake;
 
+    private boolean verbose;
+
     public DrawPanel() {
         int greetingX = 100;
+        verbose = false;
         greeting = new ArcText("С днём рождения!", greetingX, 50, Main.WINDOW_WIDTH - 2 * greetingX, 50);
         cake = new Cake(Main.WINDOW_WIDTH / 4, 150, 400, 350);
     }
@@ -29,6 +30,13 @@ public class DrawPanel extends JPanel {
         g.setFont(oldFont);
 
         cake.draw(g);
-        cake.drawVerbose(g);
+        if (verbose) {
+            greeting.drawVerbose(g);
+            cake.drawVerbose(g);
+        }
+    }
+
+    public void toggleVerbose() {
+        verbose = !verbose;
     }
 }
