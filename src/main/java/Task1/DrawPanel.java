@@ -13,10 +13,22 @@ public class DrawPanel extends JPanel {
     private boolean verbose;
 
     public DrawPanel() {
-        int greetingX = 100;
         verbose = false;
+
+        int greetingX = 100;
         greeting = new ArcText("С днём рождения!", greetingX, 50, Main.WINDOW_WIDTH - 2 * greetingX, 50);
-        cake = new Cake(Main.WINDOW_WIDTH / 4, 150, 400, 350);
+
+        cake = initCake();
+    }
+
+    private Cake initCake() {
+        final Cake cake;
+        int width = 400,
+                height = 350;
+        int x = Main.WINDOW_WIDTH / 2 - width / 2;
+        int y = Main.WINDOW_HEIGHT / 2 - height / 2;
+        cake = new Cake(x, y, width, height);
+        return cake;
     }
 
     @Override

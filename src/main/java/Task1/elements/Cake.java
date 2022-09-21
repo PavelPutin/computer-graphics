@@ -1,9 +1,6 @@
 package Task1.elements;
 
 import java.awt.*;
-import java.awt.geom.GeneralPath;
-import java.awt.image.TileObserver;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Cake {
     private int x, y, width, height, diameter;

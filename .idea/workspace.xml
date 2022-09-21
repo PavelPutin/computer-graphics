@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Рефакторинг кода рисования тортика">
+    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Исправил отрисовку вспомогательных элементов текста-арки">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Task1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/Cream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Cream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/Cake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Cake.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663153715354</updated>
-      <workItem from="1663778832942" duration="1155000" />
+      <workItem from="1663778832942" duration="1834000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1663154202254</created>
@@ -215,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663778854431</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Исправил отрисовку вспомогательных элементов текста-арки">
+      <created>1663780178184</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1663780178184</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,6 +252,7 @@
     <MESSAGE value="Перенёс код рисования торта в отдельный класс" />
     <MESSAGE value="Перенёс код рисования коржа в отдельный класс" />
     <MESSAGE value="Рефакторинг кода рисования тортика" />
-    <option name="LAST_COMMIT_MESSAGE" value="Рефакторинг кода рисования тортика" />
+    <MESSAGE value="Исправил отрисовку вспомогательных элементов текста-арки" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправил отрисовку вспомогательных элементов текста-арки" />
   </component>
 </project>
