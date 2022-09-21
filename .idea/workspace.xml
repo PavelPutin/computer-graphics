@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Перенёс код рисования коржа в отдельный класс">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Cream.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Point.java" afterDir="false" />
+    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Рефакторинг кода рисования тортика">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Candle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/ArcText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/AxeX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/AxeX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/AxeY.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/AxeY.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/Cake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Cake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/CakeTin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/CakeTin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/DrawUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/DrawUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663414737070</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Рефакторинг кода рисования тортика">
+      <created>1663417259851</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1663417259851</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -219,6 +218,7 @@
     <MESSAGE value="Написал прототип тортика" />
     <MESSAGE value="Перенёс код рисования торта в отдельный класс" />
     <MESSAGE value="Перенёс код рисования коржа в отдельный класс" />
-    <option name="LAST_COMMIT_MESSAGE" value="Перенёс код рисования коржа в отдельный класс" />
+    <MESSAGE value="Рефакторинг кода рисования тортика" />
+    <option name="LAST_COMMIT_MESSAGE" value="Рефакторинг кода рисования тортика" />
   </component>
 </project>
