@@ -2,13 +2,15 @@ package Task1;
 
 import Task1.elements.ArcText;
 import Task1.elements.Cake;
+import Task1.elements.Cloud;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class DrawPanel extends JPanel {
-    private final ArcText greeting;
-    private final Cake cake;
+    private ArcText greeting;
+    private Cake cake;
+    private Cloud cloud;
 
     private boolean verbose;
 
@@ -18,17 +20,19 @@ public class DrawPanel extends JPanel {
         int greetingX = 100;
         greeting = new ArcText("С днём рождения!", greetingX, 50, Main.WINDOW_WIDTH - 2 * greetingX, 50);
 
-        cake = initCake();
-    }
-
-    private Cake initCake() {
-        final Cake cake;
         int width = 400,
                 height = 350;
         int x = Main.WINDOW_WIDTH / 2 - width / 2;
         int y = Main.WINDOW_HEIGHT / 2 - height / 2;
         cake = new Cake(x, y, width, height);
-        return cake;
+
+        int cloudWidth = width + 400, cloudHeight = height / 2;
+        cloud = new Cloud(
+                Main.WINDOW_WIDTH / 2 - cloudWidth / 2,
+                Main.WINDOW_HEIGHT / 2 - cloudHeight / 2 + height / 3,
+                cloudWidth,
+                cloudHeight,
+                6);
     }
 
     @Override
@@ -41,7 +45,9 @@ public class DrawPanel extends JPanel {
         greeting.draw(g);
         g.setFont(oldFont);
 
+        cloud.draw(g);
         cake.draw(g);
+
         if (verbose) {
             greeting.drawVerbose(g);
             cake.drawVerbose(g);

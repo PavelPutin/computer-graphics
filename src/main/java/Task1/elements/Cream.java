@@ -1,8 +1,9 @@
 package Task1.elements;
 
+import Task1.MathUtils;
+
 import java.awt.*;
 import java.awt.geom.GeneralPath;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Cream {
     private int x, y, width, height, diameter;
@@ -32,20 +33,20 @@ public class Cream {
 
         curveX[0] = x;
         curveX[curveX.length - 1] = x + width;
-        curveY[0] = y + randInt(min, max);
-        curveY[curveX.length - 1] = y + randInt(min, max);
+        curveY[0] = y + MathUtils.randInt(min, max);
+        curveY[curveX.length - 1] = y + MathUtils.randInt(min, max);
 
         for (int i = 1; i < creamParts; i++) {
             curveX[2 * i] = i * step + x;
-            curveY[2 * i] = y + randInt(min, max);
+            curveY[2 * i] = y + MathUtils.randInt(min, max);
         }
 
         int k = 0;
         for (int i = 1; i < curveX.length; i += 2) {
-            curveX[i] = randInt(curveX[i - 1] + 5, curveX[i + 1] - 5);
-            curveY[i] = randInt(Math.max(curveY[i - 1], curveY[i + 1]), y + max);
+            curveX[i] = MathUtils.randInt(curveX[i - 1] + 5, curveX[i + 1] - 5);
+            curveY[i] = MathUtils.randInt(Math.max(curveY[i - 1], curveY[i + 1]), y + max);
             if (k++ % 2 != 0) {
-                curveY[i] = randInt(y + min, Math.min(curveY[i - 1], curveY[i + 1]));
+                curveY[i] = MathUtils.randInt(y + min, Math.min(curveY[i - 1], curveY[i + 1]));
             }
         }
     }
@@ -90,7 +91,4 @@ public class Cream {
         g.setColor(old);
     }
 
-    private int randInt(int min, int max) {
-        return ThreadLocalRandom.current().nextInt(min, max + 1);
-    }
 }
