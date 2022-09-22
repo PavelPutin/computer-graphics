@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Отрисовывается статичное облако">
+    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Сделал анимацию облака">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Task1/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/Cloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Cloud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/CloudPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/CloudPart.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +47,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Pavel/Desktop/ВГУ.lnk"
+    "last_opened_file_path": "C:/Users/Pavel/Desktop/Reepositories/ComputerGraphics"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -85,6 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1663153715354</updated>
       <workItem from="1663778832942" duration="8941000" />
+      <workItem from="1663849442707" duration="974000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1663154202254</created>
@@ -254,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663787129878</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Сделал анимацию облака">
+      <created>1663849726481</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1663849726481</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +298,7 @@
     <MESSAGE value="Удалил неиспользуемый класс Candle" />
     <MESSAGE value="Написал прототип облака" />
     <MESSAGE value="Отрисовывается статичное облако" />
-    <option name="LAST_COMMIT_MESSAGE" value="Отрисовывается статичное облако" />
+    <MESSAGE value="Сделал анимацию облака" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал анимацию облака" />
   </component>
 </project>

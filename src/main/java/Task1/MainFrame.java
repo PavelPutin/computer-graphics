@@ -1,11 +1,10 @@
 package Task1;
 
+import Task1.elements.Cloud;
 import Task1.elements.CloudPart;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -20,8 +19,10 @@ public class MainFrame extends JFrame {
 
         Timer timer = new Timer(1000 / 24, e -> {
             t = (t + 1000f / 24) % Integer.MAX_VALUE;
-            for (CloudPart part : dp.getCloud().getParts()) {
-                part.update(t);
+            for (Cloud cloud : dp.getClouds()) {
+                for (CloudPart part : cloud.getParts()) {
+                    part.update(t);
+                }
             }
             dp.repaint();
         });

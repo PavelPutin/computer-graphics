@@ -6,11 +6,13 @@ import Task1.elements.Cloud;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DrawPanel extends JPanel {
     private ArcText greeting;
     private Cake cake;
-    private Cloud cloud;
+    private java.util.List<Cloud> clouds;
 
     private boolean verbose;
 
@@ -26,13 +28,22 @@ public class DrawPanel extends JPanel {
         int y = Main.WINDOW_HEIGHT / 2 - height / 2;
         cake = new Cake(x, y, width, height);
 
-        int cloudWidth = width + 400, cloudHeight = height / 2;
-        cloud = new Cloud(
-                Main.WINDOW_WIDTH / 2 - cloudWidth / 2,
-                Main.WINDOW_HEIGHT / 2 - cloudHeight / 2 + height / 3,
-                cloudWidth,
-                cloudHeight,
-                6);
+        clouds = new ArrayList<>();
+        int bigCloudWidth = width + 400, bigCloudHeight = height / 2;
+        clouds.add(new Cloud(
+                Main.WINDOW_WIDTH / 2 - bigCloudWidth / 2,
+                Main.WINDOW_HEIGHT / 2 - bigCloudHeight / 2 + height / 3,
+                bigCloudWidth,
+                bigCloudHeight,
+                6));
+
+        int smallCloudWidth = width, smallCloudHeight = height / 4;
+        clouds.add(new Cloud(
+                Main.WINDOW_WIDTH / 2 - smallCloudWidth / 2,
+                Main.WINDOW_HEIGHT / 2 - smallCloudHeight / 2 + height / 3,
+                smallCloudWidth,
+                smallCloudHeight,
+                10));
     }
 
     @Override
@@ -45,12 +56,15 @@ public class DrawPanel extends JPanel {
         greeting.draw(g);
         g.setFont(oldFont);
 
-        cloud.draw(g);
+        clouds.get(0).draw(g);
         cake.draw(g);
+        clouds.get(1).draw(g);
 
         if (verbose) {
             greeting.drawVerbose(g);
-            cloud.drawVerbose(g);
+            for (Cloud cloud : clouds) {
+                cloud.drawVerbose(g);
+            }
             cake.drawVerbose(g);
         }
     }
@@ -59,7 +73,7 @@ public class DrawPanel extends JPanel {
         verbose = !verbose;
     }
 
-    public Cloud getCloud() {
-        return cloud;
+    public List<Cloud> getClouds() {
+        return clouds;
     }
 }

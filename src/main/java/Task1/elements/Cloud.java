@@ -27,7 +27,7 @@ public class Cloud {
             double step = Math.PI / (12 * (layersNumber - i));
             int initialPartRadius = width / layersNumber + i;
 
-            int grayComponent = 255 - 5 * i;
+            int grayComponent = 255;
 
             for (double angle = 0f; Math.abs(2 * Math.PI - angle) >= 1e-6; angle += step) {
                 int partX = (int) (radiusWidth[i] * Math.cos(angle) + this.x + width / 2);
@@ -39,7 +39,7 @@ public class Cloud {
                 if (Math.PI <= angle && angle <= 2 * Math.PI) {
                     realPartRadius = initialPartRadius - 10 + MathUtils.randInt(-5, 5);
                 }
-                int realGrayComponent = Math.min(grayComponent + MathUtils.randInt(-3, 3), 255);
+                int realGrayComponent = Math.min(grayComponent + MathUtils.randInt(-5, 0), 255);
 
                 Color partColor = new Color(realGrayComponent, realGrayComponent, realGrayComponent);
                 parts.add(new CloudPart(partX - realPartRadius / 2, partY - realPartRadius / 2, realPartRadius, realPartRadius, partColor));
