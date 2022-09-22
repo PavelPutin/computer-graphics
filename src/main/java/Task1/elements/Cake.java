@@ -5,6 +5,7 @@ import java.awt.*;
 public class Cake {
     public static final int YMAX = 10;
     public static final int SLOWNESS_COEFFICIENT = 500;
+    public static final int CREAM_GAP = 5;
     private int x, y, width, height, diameter;
 
     private CakeTin tin;
@@ -22,7 +23,7 @@ public class Cake {
 
         diameter = width / 4;
         tin = new CakeTin(x, y, width, height, diameter, cakeColor);
-        cream = new Cream(x, y, width, height, diameter, creamColor, additionalCreamColor);
+        cream = new Cream(x, y, width, height, diameter, CREAM_GAP, creamColor, additionalCreamColor);
     }
 
     public void draw(Graphics2D g) {

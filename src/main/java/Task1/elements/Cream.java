@@ -7,50 +7,57 @@ import java.awt.geom.GeneralPath;
 import java.util.Arrays;
 
 public class Cream {
-    private int x, y, pivotY, width, height, diameter;
+    private int x, y, pivotY, width, height, gap, diameter;
     private boolean verbose;
     private Color main, additional;
 
     private final int creamParts, min, max;
     private int[] curveX, curveY, pivotCurveY;
 
-    public Cream(int x, int y, int width, int height, int diameter, Color main, Color additional) {
-        this.x = x;
+    public Cream(int x, int y, int width, int height, int diameter, int gap, Color main, Color additional) {
+        this.x = x - gap;
         this.y = pivotY = y;
-        this.width = width;
+        this.width = width + gap * 2;
         this.height = height;
         this.diameter = diameter;
-        this.verbose = verbose;
+        this.gap = gap;
         this.main = main;
         this.additional = additional;
 
-        creamParts = 8;
-        min = diameter + 4;
+        min = diameter + 10;
         max = height - diameter - 4;
+
+        creamParts = getCreamParts();
+    }
+
+    private int getCreamParts() {
+        final int creamParts;
+        creamParts = 9;
 
         int step = width / creamParts;
         curveX = new int[2 * (creamParts + 1) - 1];
         curveY = new int[2 * (creamParts + 1) - 1];
 
-        curveX[0] = x;
-        curveX[curveX.length - 1] = x + width;
-        curveY[0] = y + MathUtils.randInt(min, max);
-        curveY[curveX.length - 1] = y + MathUtils.randInt(min, max);
+        curveX[0] = 0;
+        curveX[curveX.length - 1] = width;
+        curveY[0] = MathUtils.randInt(min, max);
+        curveY[curveX.length - 1] = MathUtils.randInt(min, max);
 
         for (int i = 1; i < creamParts; i++) {
-            curveX[2 * i] = i * step + x;
-            curveY[2 * i] = y + MathUtils.randInt(min, max);
+            curveX[2 * i] = i * step;
+            curveY[2 * i] = MathUtils.randInt(min, max);
         }
 
         int k = 0;
         for (int i = 1; i < curveX.length; i += 2) {
             curveX[i] = MathUtils.randInt(curveX[i - 1] + 5, curveX[i + 1] - 5);
-            curveY[i] = MathUtils.randInt(Math.max(curveY[i - 1], curveY[i + 1]), y + max);
+            curveY[i] = MathUtils.randInt(Math.max(curveY[i - 1], curveY[i + 1]), max);
             if (k++ % 2 != 0) {
-                curveY[i] = MathUtils.randInt(y + min, Math.min(curveY[i - 1], curveY[i + 1]));
+                curveY[i] = MathUtils.randInt(min, Math.min(curveY[i - 1], curveY[i + 1]));
             }
         }
         pivotCurveY = Arrays.copyOf(curveY, curveY.length);
+        return creamParts;
     }
 
     public void draw(Graphics2D g) {
@@ -58,21 +65,21 @@ public class Cream {
         g.setColor(additional);
         GeneralPath creamWave = new GeneralPath();
         creamWave.moveTo(x, y + diameter / 2);
-        
 
-
-        creamWave.lineTo(curveX[0], curveY[0]);
+        creamWave.lineTo(x + curveX[0], pivotY + curveY[0]);
         for (int i = 2; i < curveX.length; i += 2) {
             creamWave.curveTo(
-                    curveX[i - 2], curveY[i - 2],
-                    curveX[i - 1], curveY[i - 1],
-                    curveX[i], curveY[i]
+                    x + curveX[i - 2], pivotY + curveY[i - 2],
+                    x + curveX[i - 1], pivotY + curveY[i - 1],
+                    x + curveX[i], pivotY + curveY[i]
             );
         }
-        creamWave.lineTo(curveX[curveX.length - 1], curveY[curveY.length - 1]);
+        creamWave.lineTo(x + curveX[curveX.length - 1], pivotY + curveY[curveY.length - 1]);
         creamWave.lineTo(x + width, y + diameter / 2);
 
         g.fill(creamWave);
+        g.fillRect(x, y + min, gap, pivotCurveY[0] - min);
+        g.fillRect(x + width - gap, y + min, gap, pivotCurveY[pivotCurveY.length - 1] - min);
 
         g.setColor(main);
         g.fillOval(x, y, width, diameter);
@@ -83,8 +90,11 @@ public class Cream {
     public void drawVerbose(Graphics2D g) {
         Color old = g.getColor();
         for (int i = 0; i < curveX.length; i++) {
-            new Point(curveX[i], curveY[i], 5, Color.ORANGE).draw(g);
+            new Point(x + curveX[i], pivotY + curveY[i], 5, Color.ORANGE).draw(g);
         }
+
+        g.drawRect(x, y + min, gap, pivotCurveY[0] - min);
+        g.drawRect(x + width - gap, y + min, gap, pivotCurveY[pivotCurveY.length - 1] - min);
 
         g.setColor(Color.GREEN);
         g.drawLine(x, y + min, x + width, y + min);
@@ -95,7 +105,7 @@ public class Cream {
 
     public void update(double t) {
         double oscillation = Cake.YMAX * Math.sin(t / Cake.SLOWNESS_COEFFICIENT);
-        this.y = (int) (pivotY + oscillation);
+        y = (int) (pivotY + oscillation);
         for (int i = 0; i < curveY.length; i++) {
             curveY[i] = (int) (pivotCurveY[i] + oscillation);
         }
