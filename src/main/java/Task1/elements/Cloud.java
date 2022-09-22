@@ -4,6 +4,7 @@ import Task1.MathUtils;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Cloud {
     private int x, y, width, height, layersNumber;
@@ -71,5 +72,9 @@ public class Cloud {
             g.drawOval(this.x + width / 2 - radiusWidth[i], this.y + height / 2 - radiusHeight[i], 2 * radiusWidth[i], 2 * radiusHeight[i]);
         }
         g.setColor(old);
+    }
+
+    public List<CloudPart> getParts() {
+        return parts;
     }
 }

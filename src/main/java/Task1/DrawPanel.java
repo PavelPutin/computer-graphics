@@ -58,4 +58,8 @@ public class DrawPanel extends JPanel {
     public void toggleVerbose() {
         verbose = !verbose;
     }
+
+    public Cloud getCloud() {
+        return cloud;
+    }
 }
