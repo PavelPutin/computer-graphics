@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Сделал анимацию облака">
+    <list default="true" id="a9288c86-aa99-42ee-9ce6-ce498b6833b9" name="Changes" comment="Добавил фон и окрасил буквы">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Background.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/DrawPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Task1/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/Cloud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Cloud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/Cake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Cake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/CakeTin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/CakeTin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/CloudPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/CloudPart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Task1/elements/Cream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Task1/elements/Cream.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +88,7 @@
       <option name="presentableId" value="Default" />
       <updated>1663153715354</updated>
       <workItem from="1663778832942" duration="8941000" />
-      <workItem from="1663849442707" duration="974000" />
+      <workItem from="1663849442707" duration="3152000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1663154202254</created>
@@ -261,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663849726481</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Добавил маленькое облако">
+      <created>1663850436887</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1663850436887</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,6 +310,8 @@
     <MESSAGE value="Написал прототип облака" />
     <MESSAGE value="Отрисовывается статичное облако" />
     <MESSAGE value="Сделал анимацию облака" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал анимацию облака" />
+    <MESSAGE value="Добавил маленькое облако" />
+    <MESSAGE value="Добавил фон и окрасил буквы" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил фон и окрасил буквы" />
   </component>
 </project>

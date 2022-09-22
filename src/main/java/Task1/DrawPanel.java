@@ -1,8 +1,6 @@
 package Task1;
 
-import Task1.elements.ArcText;
-import Task1.elements.Cake;
-import Task1.elements.Cloud;
+import Task1.elements.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DrawPanel extends JPanel {
+    private Background background;
     private ArcText greeting;
     private Cake cake;
     private java.util.List<Cloud> clouds;
@@ -18,6 +17,8 @@ public class DrawPanel extends JPanel {
 
     public DrawPanel() {
         verbose = false;
+
+        background = new Background();
 
         int greetingX = 100;
         greeting = new ArcText("С днём рождения!", greetingX, 50, Main.WINDOW_WIDTH - 2 * greetingX, 50);
@@ -37,10 +38,10 @@ public class DrawPanel extends JPanel {
                 bigCloudHeight,
                 6));
 
-        int smallCloudWidth = width, smallCloudHeight = height / 4;
+        int smallCloudWidth = width + 50, smallCloudHeight = height / 4;
         clouds.add(new Cloud(
                 Main.WINDOW_WIDTH / 2 - smallCloudWidth / 2,
-                Main.WINDOW_HEIGHT / 2 - smallCloudHeight / 2 + height / 3,
+                Main.WINDOW_HEIGHT / 2 - smallCloudHeight / 2 + height / 3 + 25,
                 smallCloudWidth,
                 smallCloudHeight,
                 10));
@@ -51,9 +52,16 @@ public class DrawPanel extends JPanel {
         super.paint(gr);
         Graphics2D g = (Graphics2D) gr;
 
+        background.draw(g);
+        Color old = g.getColor();
         Font oldFont = g.getFont();
         g.setFont(new Font("Comic Sans MS", Font.ITALIC, 35));
+        g.setPaint(new LinearGradientPaint(0, 0, 35, 20,
+                new float[] {0.5f, 1.0f},
+                new Color[] {new Color(0xFDC830), new Color(0xF37335)}
+        ));
         greeting.draw(g);
+        g.setColor(old);
         g.setFont(oldFont);
 
         clouds.get(0).draw(g);
@@ -75,5 +83,9 @@ public class DrawPanel extends JPanel {
 
     public List<Cloud> getClouds() {
         return clouds;
+    }
+
+    public Cake getCake() {
+        return cake;
     }
 }

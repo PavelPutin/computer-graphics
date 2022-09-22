@@ -16,14 +16,15 @@ public class MainFrame extends JFrame {
     public MainFrame() throws HeadlessException {
         dp = new DrawPanel();
         this.add(dp);
-
-        Timer timer = new Timer(1000 / 24, e -> {
-            t = (t + 1000f / 24) % Integer.MAX_VALUE;
+        int delay = 1000 / FPS;
+        Timer timer = new Timer(delay, e -> {
+            t = (t + delay) % Integer.MAX_VALUE;
             for (Cloud cloud : dp.getClouds()) {
                 for (CloudPart part : cloud.getParts()) {
                     part.update(t);
                 }
             }
+            dp.getCake().update(t);
             dp.repaint();
         });
         timer.start();

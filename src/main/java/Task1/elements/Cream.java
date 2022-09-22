@@ -4,18 +4,19 @@ import Task1.MathUtils;
 
 import java.awt.*;
 import java.awt.geom.GeneralPath;
+import java.util.Arrays;
 
 public class Cream {
-    private int x, y, width, height, diameter;
+    private int x, y, pivotY, width, height, diameter;
     private boolean verbose;
     private Color main, additional;
 
     private final int creamParts, min, max;
-    private int[] curveX, curveY;
+    private int[] curveX, curveY, pivotCurveY;
 
     public Cream(int x, int y, int width, int height, int diameter, Color main, Color additional) {
         this.x = x;
-        this.y = y;
+        this.y = pivotY = y;
         this.width = width;
         this.height = height;
         this.diameter = diameter;
@@ -49,6 +50,7 @@ public class Cream {
                 curveY[i] = MathUtils.randInt(y + min, Math.min(curveY[i - 1], curveY[i + 1]));
             }
         }
+        pivotCurveY = Arrays.copyOf(curveY, curveY.length);
     }
 
     public void draw(Graphics2D g) {
@@ -89,6 +91,14 @@ public class Cream {
         g.setColor(Color.CYAN);
         g.drawLine(x, y + max, x + width, y + max);
         g.setColor(old);
+    }
+
+    public void update(double t) {
+        double oscillation = Cake.YMAX * Math.sin(t / Cake.SLOWNESS_COEFFICIENT);
+        this.y = (int) (pivotY + oscillation);
+        for (int i = 0; i < curveY.length; i++) {
+            curveY[i] = (int) (pivotCurveY[i] + oscillation);
+        }
     }
 
 }

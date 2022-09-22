@@ -3,13 +3,12 @@ package Task1.elements;
 import java.awt.*;
 
 public class CakeTin {
-    private int x, y, height, width, diameter;
-    private boolean verbose;
+    private int x, y, pivotY, height, width, diameter;
     private final Color color;
 
     public CakeTin(int x, int y, int width, int height, int diameter, Color color) {
         this.x = x;
-        this.y = y;
+        this.y = pivotY = y;
         this.width = width;
         this.height = height;
         this.diameter = diameter;
@@ -30,5 +29,9 @@ public class CakeTin {
         g.drawOval(x, y + height - diameter, width, diameter);
         g.drawRect(x, y + width / 8, width, height - diameter);
         g.drawOval(x, y, width, diameter);
+    }
+
+    public void update(double t) {
+        this.y = (int) (pivotY + Cake.YMAX * Math.sin(t / Cake.SLOWNESS_COEFFICIENT));
     }
 }

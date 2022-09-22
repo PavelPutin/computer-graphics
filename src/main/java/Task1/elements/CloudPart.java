@@ -5,12 +5,12 @@ import Task1.MathUtils;
 import java.awt.*;
 
 public class CloudPart {
-    private int x, pivotX, y, pivotY, width, height;
+    private int x, y, pivotY, width, height;
     private Color color;
     private int ymax, fasa0;
 
     public CloudPart(int x, int y, int width, int height, Color color) {
-        this.x = this.pivotX = x;
+        this.x = x;
         this.y = this.pivotY = y;
         this.width = width;
         this.height = height;

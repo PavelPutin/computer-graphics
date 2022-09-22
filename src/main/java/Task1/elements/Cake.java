@@ -3,6 +3,8 @@ package Task1.elements;
 import java.awt.*;
 
 public class Cake {
+    public static final int YMAX = 10;
+    public static final int SLOWNESS_COEFFICIENT = 500;
     private int x, y, width, height, diameter;
 
     private CakeTin tin;
@@ -40,35 +42,8 @@ public class Cake {
         g.setColor(old);
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
+    public void update(double t) {
+        tin.update(t);
+        cream.update(t);
     }
 }
