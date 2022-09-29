@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Написаны все необходимые афинные преобразования">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/Application.java" afterDir="false" />
+    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Написал методы для нахождения обратной матрицы">
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/DrawPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/matrix_algebra/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/matrix_algebra/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/AffineTransformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/AffineTransformation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +101,7 @@
       <workItem from="1663849442707" duration="6906000" />
       <workItem from="1663865103645" duration="584000" />
       <workItem from="1664094507056" duration="255000" />
-      <workItem from="1664433291070" duration="22893000" />
+      <workItem from="1664433291070" duration="23249000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1663154202254</created>
@@ -336,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664457865459</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Написал методы для нахождения обратной матрицы">
+      <created>1664462075164</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1664462075164</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,7 +359,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Перенёс код рисования текста-арки в отдельный класс" />
     <MESSAGE value="Создал для удобства классы отрисоки осей координат" />
     <MESSAGE value="Провёл рефакторинг класса ArcText" />
     <MESSAGE value="Добавил угловые отступы для текста" />
@@ -379,6 +383,7 @@
     <MESSAGE value="Сделаны фигуры и механизм их отрисовки" />
     <MESSAGE value="Написан базовый класс для афинных преобразований" />
     <MESSAGE value="Написаны все необходимые афинные преобразования" />
-    <option name="LAST_COMMIT_MESSAGE" value="Написаны все необходимые афинные преобразования" />
+    <MESSAGE value="Написал методы для нахождения обратной матрицы" />
+    <option name="LAST_COMMIT_MESSAGE" value="Написал методы для нахождения обратной матрицы" />
   </component>
 </project>

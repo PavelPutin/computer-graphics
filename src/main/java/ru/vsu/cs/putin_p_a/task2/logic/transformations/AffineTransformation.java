@@ -17,4 +17,9 @@ public class AffineTransformation {
     public AffineTransformation then(AffineTransformation t) {
         return new AffineTransformation(transformation.multiply(t.getTransformation()));
     }
+
+    public AffineTransformation getRedo() {
+        Matrix inverse = transformation.getInverse();
+        return new AffineTransformation(inverse);
+    }
 }

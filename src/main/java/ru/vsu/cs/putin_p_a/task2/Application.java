@@ -7,12 +7,5 @@ public class Application {
 
     public static void main(String[] args) {
         new MainWindow();
-        Matrix a = new Matrix(new double[][]{
-                {1, 2},
-                {3, 4}
-        });
-        System.out.println(a.getDeterminant());
-        System.out.println(a.getTransposed());
-        System.out.println(a.getInverse());
     }
 }
