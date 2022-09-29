@@ -57,8 +57,6 @@ public class Redactor {
             preview = new Path2d(current.getVertexes());
         }
         preview.transform(relativeTransform);
-        System.out.println(current.getMatrixVertexes());
-        System.out.println(preview.getMatrixVertexes());
     }
 
     public void removeLastTransformation() {
