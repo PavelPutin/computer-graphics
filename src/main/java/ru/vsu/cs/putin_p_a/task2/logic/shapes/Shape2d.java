@@ -9,26 +9,13 @@ import java.util.List;
 
 abstract public class Shape2d implements Cloneable{
     private final List<HomogeneousCoordinates2d> vertexes;
-    private HomogeneousCoordinates2d transformOrigin;
-
     public Shape2d() {
         this.vertexes = new ArrayList<>();
-        transformOrigin = new HomogeneousCoordinates2d(0, 0, 1);
     }
 
     public Shape2d(List<HomogeneousCoordinates2d> vertexes) {
         this.vertexes = new ArrayList<>(vertexes);
-        transformOrigin = new HomogeneousCoordinates2d(0, 0, 1);
     }
-
-    public HomogeneousCoordinates2d getTransformOrigin() {
-        return transformOrigin;
-    }
-
-    public void setTransformOrigin(HomogeneousCoordinates2d transformOrigin) {
-        this.transformOrigin = transformOrigin;
-    }
-
     public List<HomogeneousCoordinates2d> getVertexes() {
         return new ArrayList<>(vertexes);
     }
@@ -46,11 +33,7 @@ abstract public class Shape2d implements Cloneable{
     }
 
     public void transform(AffineTransformation t) {
-        Translation t1 = new Translation(-transformOrigin.getX(), -transformOrigin.getY()),
-                t2 = new Translation(transformOrigin.getX(), transformOrigin.getY());
-
-        AffineTransformation relativeTransformation = t1.then(t).then(t2);
-        Matrix transformedCoordinates = getMatrixVertexes().multiply(relativeTransformation.getTransformation());
+        Matrix transformedCoordinates = getMatrixVertexes().multiply(t.getTransformation());
         int i = 0;
         for (List<Double> row : transformedCoordinates.getValues()) {
             vertexes.set(i++, new HomogeneousCoordinates2d(row));

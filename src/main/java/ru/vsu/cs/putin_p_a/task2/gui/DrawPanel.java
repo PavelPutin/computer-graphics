@@ -48,11 +48,13 @@ public class DrawPanel extends JPanel {
 
         if (target != null) {
             d.draw(target);
-            System.out.println(target.getMatrixVertexes());
         }
 
         if (targetPreview != null) {
+            old = g.getColor();
+            g.setColor(Color.red);
             d.draw(targetPreview);
+            g.setColor(old);
         }
     }
 }
