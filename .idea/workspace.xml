@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Сделал возможноть получать трансформации, обратные данным. Убрал лишние System.out">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/Line.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/CoordinateSystem.java" afterDir="false" />
+    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Добавил привязку к системе координат">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/Redactor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/Path2d.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/EmptyTransformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/DrawPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/Drawer2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/Drawer2d.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/Shape2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/Shape2d.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/Triangle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +24,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -105,7 +109,7 @@
       <workItem from="1663849442707" duration="6906000" />
       <workItem from="1663865103645" duration="584000" />
       <workItem from="1664094507056" duration="255000" />
-      <workItem from="1664433291070" duration="25452000" />
+      <workItem from="1664433291070" duration="28965000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1663154202254</created>
@@ -352,7 +356,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664462597810</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Добавил привязку к системе координат">
+      <created>1664466422382</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1664466422382</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +381,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Провёл рефакторинг класса ArcText" />
     <MESSAGE value="Добавил угловые отступы для текста" />
     <MESSAGE value="Сделал надпись с поздравлением" />
     <MESSAGE value="Написал прототип тортика" />
@@ -395,6 +405,7 @@
     <MESSAGE value="Написаны все необходимые афинные преобразования" />
     <MESSAGE value="Написал методы для нахождения обратной матрицы" />
     <MESSAGE value="Сделал возможноть получать трансформации, обратные данным. Убрал лишние System.out" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал возможноть получать трансформации, обратные данным. Убрал лишние System.out" />
+    <MESSAGE value="Добавил привязку к системе координат" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил привязку к системе координат" />
   </component>
 </project>

@@ -2,15 +2,16 @@ package ru.vsu.cs.putin_p_a.task2.gui;
 
 import ru.vsu.cs.putin_p_a.task2.logic.shapes.HomogeneousCoordinates2d;
 import ru.vsu.cs.putin_p_a.task2.logic.shapes.Shape2d;
+import ru.vsu.cs.putin_p_a.task2.logic.transformations.AffineTransformation;
 import ru.vsu.cs.putin_p_a.task2.logic.transformations.CoordinateSystem;
 
 import java.awt.*;
 
 public class Drawer2d {
     private final Graphics g;
-    private final CoordinateSystem cs;
+    private final AffineTransformation cs;
 
-    public Drawer2d(Graphics g, CoordinateSystem cs) {
+    public Drawer2d(Graphics g, AffineTransformation cs) {
         this.g = g;
         this.cs = cs;
     }
@@ -28,5 +29,6 @@ public class Drawer2d {
             previous = vertex;
         }
         g.drawLine((int) previous.getX(), (int) previous.getY(), (int) first.getX(), (int) first.getY());
+        s.transform(cs.getRedo());
     }
 }

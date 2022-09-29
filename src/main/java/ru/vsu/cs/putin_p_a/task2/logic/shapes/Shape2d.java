@@ -7,12 +7,17 @@ import ru.vsu.cs.putin_p_a.task2.logic.transformations.Translation;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class Shape2d {
+abstract public class Shape2d implements Cloneable{
     private final List<HomogeneousCoordinates2d> vertexes;
     private HomogeneousCoordinates2d transformOrigin;
 
     public Shape2d() {
         this.vertexes = new ArrayList<>();
+        transformOrigin = new HomogeneousCoordinates2d(0, 0, 1);
+    }
+
+    public Shape2d(List<HomogeneousCoordinates2d> vertexes) {
+        this.vertexes = new ArrayList<>(vertexes);
         transformOrigin = new HomogeneousCoordinates2d(0, 0, 1);
     }
 
@@ -50,5 +55,10 @@ abstract public class Shape2d {
         for (List<Double> row : transformedCoordinates.getValues()) {
             vertexes.set(i++, new HomogeneousCoordinates2d(row));
         }
+    }
+
+    @Override
+    public Shape2d clone() {
+        return new Path2d(vertexes);
     }
 }
