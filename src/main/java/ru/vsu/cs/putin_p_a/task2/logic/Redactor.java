@@ -14,7 +14,6 @@ public class Redactor {
     private HomogeneousCoordinates2d transformOrigin;
     private Map<String, Shape2d> availableShapes;
     private Stack<AffineTransformation> selectedTransformations;
-    private Stack<AffineTransformation> history;
 
     public Redactor() {
         current = null;
@@ -26,7 +25,6 @@ public class Redactor {
         availableShapes.put("Треугольник", new Triangle(0, 0, 1, 100, 0, 1, 50, 100, 1));
 
         selectedTransformations = new Stack<>();
-        history = new Stack<>();
     }
 
     public Shape2d getCurrent() {
@@ -59,6 +57,8 @@ public class Redactor {
             preview = new Path2d(current.getVertexes());
         }
         preview.transform(relativeTransform);
+        System.out.println(current.getMatrixVertexes());
+        System.out.println(preview.getMatrixVertexes());
     }
 
     public void removeLastTransformation() {
@@ -75,12 +75,7 @@ public class Redactor {
     }
 
     public void applyTransformations() {
-        AffineTransformation t = new EmptyTransformation();
-        while (!selectedTransformations.isEmpty()) {
-            t = t.then(selectedTransformations.pop());
-        }
-        history.push(t);
-        current.transform(t);
+        current = new Path2d(preview.getVertexes());
         preview = null;
     }
 

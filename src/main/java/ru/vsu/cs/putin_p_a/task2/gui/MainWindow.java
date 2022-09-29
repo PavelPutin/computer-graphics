@@ -2,6 +2,7 @@ package ru.vsu.cs.putin_p_a.task2.gui;
 
 import ru.vsu.cs.putin_p_a.task2.logic.Redactor;
 import ru.vsu.cs.putin_p_a.task2.logic.shapes.HomogeneousCoordinates2d;
+import ru.vsu.cs.putin_p_a.task2.logic.shapes.Point2d;
 import ru.vsu.cs.putin_p_a.task2.logic.transformations.*;
 
 import javax.swing.*;
@@ -46,10 +47,12 @@ public class MainWindow extends JFrame {
         originSelectingPanel.add(new JLabel("Точка трансформации"));
 
         JTextField transformOriginX = new JTextField();
+        transformOriginX.setText("0");
         transformOriginX.setMaximumSize(SMALL);
         originSelectingPanel.add(transformOriginX);
 
         JTextField transformOriginY = new JTextField();
+        transformOriginY.setText("0");
         transformOriginY.setMaximumSize(SMALL);
         originSelectingPanel.add(transformOriginY);
 
@@ -70,6 +73,7 @@ public class MainWindow extends JFrame {
         rotationPanel.add(new JLabel("Вращение против часовой стрелки"));
 
         JTextField rotationValue = new JTextField();
+        rotationValue.setText("0");
         rotationValue.setMaximumSize(SMALL);
         rotationPanel.add(rotationValue);
 
@@ -83,6 +87,7 @@ public class MainWindow extends JFrame {
         scalePanel.add(new JLabel("Масштабирование (увеличение)"));
 
         JTextField scaleValue = new JTextField();
+        scaleValue.setText("0");
         scaleValue.setMaximumSize(SMALL);
         scalePanel.add(scaleValue);
 
@@ -97,6 +102,7 @@ public class MainWindow extends JFrame {
         scaleXPanel.add(new JLabel("Растяжение по X"));
 
         JTextField scaleXValue = new JTextField();
+        scaleXValue.setText("0");
         scaleXValue.setMaximumSize(SMALL);
         scaleXPanel.add(scaleXValue);
 
@@ -111,6 +117,7 @@ public class MainWindow extends JFrame {
         scaleYPanel.add(new JLabel("Растяжение по Y"));
 
         JTextField scaleYValue = new JTextField();
+        scaleYValue.setText("0");
         scaleYValue.setMaximumSize(SMALL);
         scaleYPanel.add(scaleYValue);
 
@@ -140,17 +147,19 @@ public class MainWindow extends JFrame {
         translatePanel.add(new JLabel("Перемещение"));
 
         JTextField translateXValue = new JTextField();
+        translateXValue.setText("0");
         translateXValue.setMaximumSize(SMALL);
         translatePanel.add(translateXValue);
 
         JTextField translateYValue = new JTextField();
+        translateYValue.setText("0");
         translateYValue.setMaximumSize(SMALL);
         translatePanel.add(translateYValue);
 
         JButton applyTranslate = new JButton("Переместить");
         translatePanel.add(applyTranslate);
-        
-        
+
+
         JPanel applyRemovePanel = new JPanel();
         applyRemovePanel.setLayout(new BoxLayout(applyRemovePanel, BoxLayout.Y_AXIS));
         transformSettingsPanel.add(applyRemovePanel);
@@ -186,6 +195,8 @@ public class MainWindow extends JFrame {
             double x = Double.parseDouble(transformOriginX.getText());
             double y = Double.parseDouble(transformOriginY.getText());
             redactor.setTransformOrigin(new HomogeneousCoordinates2d(x, y, 1));
+            drawPanel.setTransformOriginPoint(new Point2d(x, y, 1, 3));
+            drawPanel.repaint();
             canAddTransform = true;
             transformationPanel.setVisible(canAddTransform);
         });
@@ -204,7 +215,7 @@ public class MainWindow extends JFrame {
             drawPanel.setTargetPreview(redactor.getPreview());
             drawPanel.repaint();
         });
-        
+
         applyScaleX.addActionListener(e -> {
             double scale = Double.parseDouble(scaleXValue.getText());
             redactor.addTransformation(new ScaleX(scale));
@@ -218,7 +229,7 @@ public class MainWindow extends JFrame {
             drawPanel.setTargetPreview(redactor.getPreview());
             drawPanel.repaint();
         });
-        
+
         applyReflectionX.addActionListener(e -> {
             redactor.addTransformation(new ReflectionX());
             drawPanel.setTargetPreview(redactor.getPreview());
@@ -230,7 +241,7 @@ public class MainWindow extends JFrame {
             drawPanel.setTargetPreview(redactor.getPreview());
             drawPanel.repaint();
         });
-        
+
         applyTranslate.addActionListener(e -> {
             double translateX = Double.parseDouble(translateXValue.getText());
             double translateY = Double.parseDouble(translateYValue.getText());
@@ -238,7 +249,7 @@ public class MainWindow extends JFrame {
             drawPanel.setTargetPreview(redactor.getPreview());
             drawPanel.repaint();
         });
-        
+
         applyTransform.addActionListener(e -> {
             redactor.applyTransformations();
             drawPanel.setTarget(redactor.getCurrent());

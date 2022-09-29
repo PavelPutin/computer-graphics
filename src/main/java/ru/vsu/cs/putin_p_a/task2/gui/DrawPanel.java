@@ -1,6 +1,7 @@
 package ru.vsu.cs.putin_p_a.task2.gui;
 
 import ru.vsu.cs.putin_p_a.task2.logic.shapes.Line;
+import ru.vsu.cs.putin_p_a.task2.logic.shapes.Point2d;
 import ru.vsu.cs.putin_p_a.task2.logic.shapes.Shape2d;
 import ru.vsu.cs.putin_p_a.task2.logic.transformations.*;
 
@@ -10,11 +11,17 @@ import java.awt.*;
 public class DrawPanel extends JPanel {
     private Shape2d target;
     private Shape2d targetPreview;
+    private Point2d transformOriginPoint;
 
     public DrawPanel() {
         super();
         target = null;
         targetPreview = null;
+        transformOriginPoint = null;
+    }
+
+    public void setTransformOriginPoint(Point2d transformOriginPoint) {
+        this.transformOriginPoint = transformOriginPoint;
     }
 
     public void setTarget(Shape2d target) {
@@ -52,8 +59,15 @@ public class DrawPanel extends JPanel {
 
         if (targetPreview != null) {
             old = g.getColor();
-            g.setColor(Color.red);
+            g.setColor(Color.RED);
             d.draw(targetPreview);
+            g.setColor(old);
+        }
+
+        if (transformOriginPoint != null) {
+            old = g.getColor();
+            g.setColor(Color.ORANGE);
+            d.draw(transformOriginPoint);
             g.setColor(old);
         }
     }

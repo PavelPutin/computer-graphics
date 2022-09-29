@@ -9,5 +9,8 @@ public class ScaleX extends AffineTransformation {
                 {0, 1, 0},
                 {0, 0, 1}
         }));
+        if (riseCoefficient == 0) {
+            throw new RuntimeException("Коэффициент увеличения не может равняться 0");
+        }
     }
 }
