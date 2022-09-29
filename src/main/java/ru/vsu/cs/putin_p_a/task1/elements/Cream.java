@@ -1,24 +1,29 @@
-package Task1.elements;
+package ru.vsu.cs.putin_p_a.task1.elements;
 
-import Task1.MathUtils;
+import ru.vsu.cs.putin_p_a.task1.MathUtils;
 
 import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.util.Arrays;
 
 public class Cream {
-    private int x, y, pivotY, width, height, gap, diameter;
-    private boolean verbose;
-    private Color main, additional;
+    private final int x;
+    private int y;
+    private final int pivotY;
+    private final int width;
+    private final int gap;
+    private final int diameter;
+    private final Color main;
+    private final Color additional;
 
-    private final int creamParts, min, max;
+    private final int min;
+    private final int max;
     private int[] curveX, curveY, pivotCurveY;
 
     public Cream(int x, int y, int width, int height, int diameter, int gap, Color main, Color additional) {
         this.x = x - gap;
         this.y = pivotY = y;
         this.width = width + gap * 2;
-        this.height = height;
         this.diameter = diameter;
         this.gap = gap;
         this.main = main;
@@ -27,10 +32,10 @@ public class Cream {
         min = diameter + 10;
         max = height - diameter - 4;
 
-        creamParts = getCreamParts();
+        getCreamParts();
     }
 
-    private int getCreamParts() {
+    private void getCreamParts() {
         final int creamParts;
         creamParts = 9;
 
@@ -57,14 +62,13 @@ public class Cream {
             }
         }
         pivotCurveY = Arrays.copyOf(curveY, curveY.length);
-        return creamParts;
     }
 
     public void draw(Graphics2D g) {
         Color old = g.getColor();
         g.setColor(additional);
         GeneralPath creamWave = new GeneralPath();
-        creamWave.moveTo(x, y + diameter / 2);
+        creamWave.moveTo(x, y + (double) (diameter / 2));
 
         creamWave.lineTo(x + curveX[0], pivotY + curveY[0]);
         for (int i = 2; i < curveX.length; i += 2) {
@@ -75,7 +79,7 @@ public class Cream {
             );
         }
         creamWave.lineTo(x + curveX[curveX.length - 1], pivotY + curveY[curveY.length - 1]);
-        creamWave.lineTo(x + width, y + diameter / 2);
+        creamWave.lineTo(x + width, y + (double) (diameter / 2));
 
         g.fill(creamWave);
         g.fillRect(x, y + min, gap, pivotCurveY[0] - min);

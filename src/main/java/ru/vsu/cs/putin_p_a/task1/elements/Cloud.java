@@ -1,16 +1,15 @@
-package Task1.elements;
+package ru.vsu.cs.putin_p_a.task1.elements;
 
-import Task1.MathUtils;
+import ru.vsu.cs.putin_p_a.task1.MathUtils;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cloud {
-    private int x, y, width, height, layersNumber;
+    private final int x, y, width, height, layersNumber;
     private int[] radiusWidth, radiusHeight;
-    private int randomShiftX, randomShiftY;
-    private java.util.List<CloudPart> parts;
+    private final java.util.List<CloudPart> parts;
 
     public Cloud(int x, int y, int width, int height, int layersNumber) {
         this.x = x;
@@ -20,7 +19,8 @@ public class Cloud {
         this.layersNumber = layersNumber;
 
         parts = new ArrayList<>();
-        randomShiftX = randomShiftY = 15;
+        int randomShiftY;
+        int randomShiftX = randomShiftY = 15;
         setDiameters();
 
         for (int i = 0; i < layersNumber; i++) {

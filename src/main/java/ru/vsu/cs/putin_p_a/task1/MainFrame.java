@@ -1,7 +1,7 @@
-package Task1;
+package ru.vsu.cs.putin_p_a.task1;
 
-import Task1.elements.Cloud;
-import Task1.elements.CloudPart;
+import ru.vsu.cs.putin_p_a.task1.elements.Cloud;
+import ru.vsu.cs.putin_p_a.task1.elements.CloudPart;
 
 import javax.swing.*;
 import java.awt.*;

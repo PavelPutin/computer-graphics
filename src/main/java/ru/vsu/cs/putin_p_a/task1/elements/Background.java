@@ -1,11 +1,11 @@
-package Task1.elements;
+package ru.vsu.cs.putin_p_a.task1.elements;
 
-import Task1.Main;
+import ru.vsu.cs.putin_p_a.task1.Main;
 
 import java.awt.*;
 
 public class Background {
-    private int x, y, width, height;
+    private final int x, y, width, height;
 
     public Background() {
         x = 0;

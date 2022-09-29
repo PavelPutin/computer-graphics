@@ -1,9 +1,10 @@
-package Task1.elements;
+package ru.vsu.cs.putin_p_a.task1.elements;
 
 import java.awt.*;
 
 public class CakeTin {
-    private int x, y, pivotY, height, width, diameter;
+    private final int x, pivotY, height, width, diameter;
+    private int y;
     private final Color color;
 
     public CakeTin(int x, int y, int width, int height, int diameter, Color color) {

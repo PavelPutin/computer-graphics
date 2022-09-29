@@ -1,15 +1,15 @@
-package Task1.elements;
+package ru.vsu.cs.putin_p_a.task1.elements;
 
 import java.awt.*;
 
 public class ArcText {
-    private String text;
-    private int x, y, width, height;
+    private final String text;
+    private final int x, y, width, height;
     private double angleGap;
-    private double startAngle;
-    private double endAngle;
-    private int[] txs, tys;
-    private double[] thetas;
+    private final double startAngle;
+    private final double endAngle;
+    private final int[] txs, tys;
+    private final double[] thetas;
 
     public ArcText(String text, int x, int y, int width, int height) {
         this.text = text;
@@ -63,72 +63,6 @@ public class ArcText {
         g.setColor(old);
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-        txs = new int[text.length()];
-        tys = new int[text.length()];
-        thetas = new double[text.length()];
-        getAngleGap();
-    }
-
-    public double getStartAngle() {
-        return startAngle;
-    }
-
-    public void setStartAngle(double startAngle) {
-        if (startAngle <= 0 || startAngle >= Math.PI) {
-            throw new IllegalArgumentException("Недопустимое значение угла для текста-арки");
-        }
-        this.startAngle = startAngle;
-    }
-
-    public double getEndAngle() {
-        return endAngle;
-    }
-
-    public void setEndAngle(double endAngle) {
-        if (endAngle <= 0 || endAngle >= Math.PI) {
-            throw new IllegalArgumentException("Недопустимое значение угла для текста-арки");
-        }
-        this.endAngle = endAngle;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
     private void drawCharAt(Graphics2D g, int i) {
         txs[i] = getTx(i);
         tys[i] = arcFormula(txs[i]);
@@ -161,9 +95,8 @@ public class ArcText {
 
     private double getAngleForCharacter(int x) {
         double w = (double) width / 2;
-        double h = height;
 
-        double tan = -(h * (x - w)) / (w * Math.sqrt(Math.pow(w, 2) - Math.pow((x - w), 2)));
+        double tan = -((double) height * (x - w)) / (w * Math.sqrt(Math.pow(w, 2) - Math.pow((x - w), 2)));
         return Math.atan(tan);
     }
 }

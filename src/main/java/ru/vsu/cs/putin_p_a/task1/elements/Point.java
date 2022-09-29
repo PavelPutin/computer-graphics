@@ -1,10 +1,10 @@
-package Task1.elements;
+package ru.vsu.cs.putin_p_a.task1.elements;
 
 import java.awt.*;
 
 public class Point {
-    private int x, y, diameter;
-    private Color color;
+    private final int x, y, diameter;
+    private final Color color;
 
     public Point(int x, int y, int diameter, Color color) {
         this.x = x;

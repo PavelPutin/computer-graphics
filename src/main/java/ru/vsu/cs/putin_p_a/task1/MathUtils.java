@@ -1,4 +1,4 @@
-package Task1;
+package ru.vsu.cs.putin_p_a.task1;
 
 import java.util.concurrent.ThreadLocalRandom;
 

@@ -1,4 +1,4 @@
-package Task1.elements;
+package ru.vsu.cs.putin_p_a.task1.elements;
 
 import java.awt.*;
 
@@ -6,14 +6,13 @@ public class Cake {
     public static final int YMAX = 10;
     public static final int SLOWNESS_COEFFICIENT = 500;
     public static final int CREAM_GAP = 5;
-    private int x, y, width, height, diameter;
+    private final int x;
+    private final int y;
+    private final int width;
+    private final int height;
 
-    private CakeTin tin;
-    private Cream cream;
-
-    private final Color cakeColor = new Color(42, 11, 8);
-    private final Color creamColor = new Color(218, 209, 210);
-    private final Color additionalCreamColor = new Color(223, 214, 215);
+    private final CakeTin tin;
+    private final Cream cream;
 
     public Cake(int x, int y, int width, int height) {
         this.x = x;
@@ -21,8 +20,11 @@ public class Cake {
         this.width = width;
         this.height = height;
 
-        diameter = width / 4;
+        int diameter = width / 4;
+        Color cakeColor = new Color(42, 11, 8);
         tin = new CakeTin(x, y, width, height, diameter, cakeColor);
+        Color creamColor = new Color(218, 209, 210);
+        Color additionalCreamColor = new Color(223, 214, 215);
         cream = new Cream(x, y, width, height, diameter, CREAM_GAP, creamColor, additionalCreamColor);
     }
 

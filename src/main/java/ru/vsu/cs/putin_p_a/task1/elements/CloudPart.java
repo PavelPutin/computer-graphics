@@ -1,13 +1,14 @@
-package Task1.elements;
+package ru.vsu.cs.putin_p_a.task1.elements;
 
-import Task1.MathUtils;
+import ru.vsu.cs.putin_p_a.task1.MathUtils;
 
 import java.awt.*;
 
 public class CloudPart {
-    private int x, y, pivotY, width, height;
-    private Color color;
-    private int ymax, fasa0;
+    private final int x, pivotY, width, height;
+    private int y;
+    private final Color color;
+    private final int ymax, fasa0;
 
     public CloudPart(int x, int y, int width, int height, Color color) {
         this.x = x;

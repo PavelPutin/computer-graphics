@@ -1,6 +1,9 @@
-package Task1;
+package ru.vsu.cs.putin_p_a.task1;
 
-import Task1.elements.*;
+import ru.vsu.cs.putin_p_a.task1.elements.ArcText;
+import ru.vsu.cs.putin_p_a.task1.elements.Background;
+import ru.vsu.cs.putin_p_a.task1.elements.Cake;
+import ru.vsu.cs.putin_p_a.task1.elements.Cloud;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DrawPanel extends JPanel {
-    private Background background;
-    private ArcText greeting;
-    private Cake cake;
-    private java.util.List<Cloud> clouds;
+    private final Background background;
+    private final ArcText greeting;
+    private final Cake cake;
+    private final java.util.List<Cloud> clouds;
 
     private boolean verbose;
 

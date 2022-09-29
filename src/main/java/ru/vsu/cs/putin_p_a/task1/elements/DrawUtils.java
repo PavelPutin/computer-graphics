@@ -1,4 +1,4 @@
-package Task1.elements;
+package ru.vsu.cs.putin_p_a.task1.elements;
 
 import java.awt.*;
 
