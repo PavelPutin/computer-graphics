@@ -1,4 +1,4 @@
-package ru.vsu.cs.putin_p_a.task2.logic;
+package ru.vsu.cs.putin_p_a.task2.logic.shapes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +13,13 @@ public class HomogeneousCoordinates2d {
         values.add(h);
     }
 
+    public HomogeneousCoordinates2d(List<Double> values) {
+        this.values = new ArrayList<>();
+        this.values.addAll(values);
+    }
+
     public List<Double> getValues() {
-        return values;
+        return new ArrayList<>(this.values);
     }
 
     public double getHomogeneousX() {

@@ -1,4 +1,4 @@
-package ru.vsu.cs.putin_p_a.task2.logic;
+package ru.vsu.cs.putin_p_a.task2.logic.matrix_algebra;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,19 @@ public class Matrix {
     }
 
     public List<List<Double>> getValues() {
-        return values;
+        return new ArrayList<>(values);
+    }
+
+    public double getValue(int i, int j) {
+        return values.get(i).get(j);
+    }
+
+    public int getRowsNumber() {
+        return values.size();
+    }
+
+    public int getColumnNumber() {
+        return values.get(0).size();
     }
 
     public Matrix multiply(Matrix other) {
@@ -37,10 +49,10 @@ public class Matrix {
         for (List<Double> value : this.values) {
             List<Double> newRow = new ArrayList<>();
             resultValues.add(newRow);
-            for (int columnIndex = 0; columnIndex < other.getValues().get(0).size(); columnIndex++) {
+            for (int columnIndex = 0; columnIndex < other.getColumnNumber(); columnIndex++) {
                 double result = 0;
-                for (int k = 0; k < other.getValues().size(); k++) {
-                    result += value.get(k) * other.getValues().get(k).get(columnIndex);
+                for (int k = 0; k < other.getRowsNumber(); k++) {
+                    result += value.get(k) * other.getValue(k, columnIndex);
                 }
                 newRow.add(result);
             }
