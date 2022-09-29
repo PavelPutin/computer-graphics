@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Сделал заготовку под проект">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/Matrix.java" afterDir="false" />
+    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Реализовал умножение матриц">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/Drawer2d.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/HomogeneousCoordinates2d.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/Rectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/Shape2d.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/Triangle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/DrawPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +107,7 @@
       <workItem from="1663849442707" duration="6906000" />
       <workItem from="1663865103645" duration="584000" />
       <workItem from="1664094507056" duration="255000" />
-      <workItem from="1664433291070" duration="7122000" />
+      <workItem from="1664433291070" duration="13192000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1663154202254</created>
@@ -307,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664439735336</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Реализовал умножение матриц">
+      <created>1664442909267</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1664442909267</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,7 +337,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил главное окно" />
     <MESSAGE value="Создана DrawPanel для вывода графической информации" />
     <MESSAGE value="Написал прототип текста-арки" />
     <MESSAGE value="Текст в арке распределяется по угловой мере" />
@@ -350,6 +361,7 @@
     <MESSAGE value="Merge commit" />
     <MESSAGE value="Исправил структуру пакетов" />
     <MESSAGE value="Сделал заготовку под проект" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал заготовку под проект" />
+    <MESSAGE value="Реализовал умножение матриц" />
+    <option name="LAST_COMMIT_MESSAGE" value="Реализовал умножение матриц" />
   </component>
 </project>

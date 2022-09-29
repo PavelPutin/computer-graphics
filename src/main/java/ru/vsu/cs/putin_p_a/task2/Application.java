@@ -16,7 +16,9 @@ public class Application {
                 {1, 2},
                 {3, 4}
         });
-        Matrix c = a.multiply(b);
+        Matrix c = a
+            .multiply(b)
+            .multiply(b);
         System.out.println(c);
     }
 }
