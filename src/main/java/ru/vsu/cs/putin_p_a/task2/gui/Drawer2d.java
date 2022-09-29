@@ -3,7 +3,7 @@ package ru.vsu.cs.putin_p_a.task2.gui;
 import ru.vsu.cs.putin_p_a.task2.logic.shapes.HomogeneousCoordinates2d;
 import ru.vsu.cs.putin_p_a.task2.logic.shapes.Shape2d;
 
-import java.awt.Graphics;
+import java.awt.*;
 
 public class Drawer2d {
     private final Graphics g;

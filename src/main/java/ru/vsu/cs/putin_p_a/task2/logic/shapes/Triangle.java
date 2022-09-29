@@ -8,8 +8,8 @@ public class Triangle extends Shape2d {
             HomogeneousCoordinates2d point3
     ) {
         super();
-        getVertexes().add(point1);
-        getVertexes().add(point2);
-        getVertexes().add(point3);
+        addVertex(point1);
+        addVertex(point2);
+        addVertex(point3);
     }
 }

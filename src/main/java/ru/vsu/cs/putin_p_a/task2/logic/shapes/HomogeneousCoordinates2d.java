@@ -3,7 +3,7 @@ package ru.vsu.cs.putin_p_a.task2.logic.shapes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomogeneousCoordinates2d {
+public class HomogeneousCoordinates2d implements Cloneable {
     private final List<Double> values;
 
     public HomogeneousCoordinates2d(double x, double y, double h) {
@@ -52,5 +52,10 @@ public class HomogeneousCoordinates2d {
 
     public void setH(double h) {
         values.set(2, h);
+    }
+
+    @Override
+    public HomogeneousCoordinates2d clone() {
+        return new HomogeneousCoordinates2d(this.values);
     }
 }
