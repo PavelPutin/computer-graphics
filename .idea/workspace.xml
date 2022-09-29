@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Написан базовый класс для афинных преобразований">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/ReflectionX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/ReflectionY.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/Rotation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/Scale.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/ScaleX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/ScaleY.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/Translation.java" afterDir="false" />
+    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Написаны все необходимые афинные преобразования">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/gui/DrawPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/HomogeneousCoordinates2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/HomogeneousCoordinates2d.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/Rectangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/Shape2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/Shape2d.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/shapes/Triangle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/AffineTransformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/transformations/AffineTransformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/matrix_algebra/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/task2/logic/matrix_algebra/Matrix.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +48,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Pavel/Desktop/Reepositories/ComputerGraphics",
+    "last_opened_file_path": "C:/Users/Pavel/Desktop/Reepositories/mathematical-logic-and-theory-of-algorithms",
     "settings.editor.selected.configurable": "project.propGUI"
   }
 }]]></component>
@@ -113,7 +103,7 @@
       <workItem from="1663849442707" duration="6906000" />
       <workItem from="1663865103645" duration="584000" />
       <workItem from="1664094507056" duration="255000" />
-      <workItem from="1664433291070" duration="19286000" />
+      <workItem from="1664433291070" duration="22893000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1663154202254</created>
@@ -339,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664454617182</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Написаны все необходимые афинные преобразования">
+      <created>1664457865459</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1664457865459</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,7 +354,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Текст в арке распределяется по угловой мере" />
     <MESSAGE value="Перенёс код рисования текста-арки в отдельный класс" />
     <MESSAGE value="Создал для удобства классы отрисоки осей координат" />
     <MESSAGE value="Провёл рефакторинг класса ArcText" />
@@ -382,6 +378,7 @@
     <MESSAGE value="Реализовал умножение матриц" />
     <MESSAGE value="Сделаны фигуры и механизм их отрисовки" />
     <MESSAGE value="Написан базовый класс для афинных преобразований" />
-    <option name="LAST_COMMIT_MESSAGE" value="Написан базовый класс для афинных преобразований" />
+    <MESSAGE value="Написаны все необходимые афинные преобразования" />
+    <option name="LAST_COMMIT_MESSAGE" value="Написаны все необходимые афинные преобразования" />
   </component>
 </project>
