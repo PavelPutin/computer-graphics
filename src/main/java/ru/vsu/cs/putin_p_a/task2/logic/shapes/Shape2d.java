@@ -12,11 +12,7 @@ abstract public class Shape2d {
     private HomogeneousCoordinates2d transformOrigin;
 
     public Shape2d() {
-        this(new ArrayList<>());
-    }
-
-    public Shape2d(List<HomogeneousCoordinates2d> vertexes) {
-        this.vertexes = new ArrayList<>(vertexes);
+        this.vertexes = new ArrayList<>();
         transformOrigin = new HomogeneousCoordinates2d(0, 0, 1);
     }
 
