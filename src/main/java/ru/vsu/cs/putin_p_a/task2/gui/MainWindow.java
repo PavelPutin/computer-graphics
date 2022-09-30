@@ -28,7 +28,7 @@ public class MainWindow extends JFrame {
         drawScrollPane.setViewportView(drawPanel);
 
         JPanel transformSettingsPanel = new JPanel();
-        transformSettingsPanel.setLayout(new GridLayout(0, 1));
+        transformSettingsPanel.setLayout(new BoxLayout(transformSettingsPanel, BoxLayout.Y_AXIS));
         JScrollPane settingsScrollPane = new JScrollPane();
         settingsScrollPane.setViewportView(transformSettingsPanel);
 
@@ -79,6 +79,9 @@ public class MainWindow extends JFrame {
 
         JButton applyRotation = new JButton("Повернуть");
         rotationPanel.add(applyRotation);
+
+        JLabel exceptionLabel = new JLabel();
+        transformationPanel.add(exceptionLabel);
 
         JPanel scalePanel = new JPanel();
         scalePanel.setLayout(new BoxLayout(scalePanel, BoxLayout.Y_AXIS));
@@ -211,21 +214,36 @@ public class MainWindow extends JFrame {
 
         applyScale.addActionListener(e -> {
             double scale = Double.parseDouble(scaleValue.getText());
-            redactor.addTransformation(new Scale(scale));
+            try {
+                redactor.addTransformation(new Scale(scale));
+                exceptionLabel.setText("");
+            } catch (RuntimeException exception) {
+                exceptionLabel.setText(exception.getMessage());
+            }
             drawPanel.setTargetPreview(redactor.getPreview());
             drawPanel.repaint();
         });
 
         applyScaleX.addActionListener(e -> {
             double scale = Double.parseDouble(scaleXValue.getText());
-            redactor.addTransformation(new ScaleX(scale));
+            try {
+                redactor.addTransformation(new ScaleX(scale));
+                exceptionLabel.setText("");
+            }  catch (RuntimeException exception) {
+                exceptionLabel.setText(exception.getMessage());
+            }
             drawPanel.setTargetPreview(redactor.getPreview());
             drawPanel.repaint();
         });
 
         applyScaleY.addActionListener(e -> {
             double scale = Double.parseDouble(scaleYValue.getText());
-            redactor.addTransformation(new ScaleY(scale));
+            try {
+                redactor.addTransformation(new ScaleY(scale));
+                exceptionLabel.setText("");
+            } catch (RuntimeException exception) {
+                exceptionLabel.setText(exception.getMessage());
+            }
             drawPanel.setTargetPreview(redactor.getPreview());
             drawPanel.repaint();
         });

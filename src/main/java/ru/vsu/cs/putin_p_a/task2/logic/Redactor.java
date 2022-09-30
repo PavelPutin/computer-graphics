@@ -60,7 +60,7 @@ public class Redactor {
     }
 
     public void removeLastTransformation() {
-        if (selectedTransformations.isEmpty()) {
+        if (selectedTransformations.isEmpty() || preview == null) {
             return;
         }
 
@@ -73,7 +73,9 @@ public class Redactor {
     }
 
     public void applyTransformations() {
-        current = new Path2d(preview.getVertexes());
+        if (preview != null) {
+            current = new Path2d(preview.getVertexes());
+        }
         preview = null;
     }
 
