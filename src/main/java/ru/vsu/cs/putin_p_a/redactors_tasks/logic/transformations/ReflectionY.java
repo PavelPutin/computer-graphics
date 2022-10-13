@@ -1,6 +1,6 @@
-package ru.vsu.cs.putin_p_a.task2.logic.transformations;
+package ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations;
 
-import ru.vsu.cs.putin_p_a.task2.logic.matrix_algebra.Matrix;
+import ru.vsu.cs.putin_p_a.redactors_tasks.math_utils.matrix_algebra.Matrix;
 
 public class ReflectionY extends AffineTransformation {
 

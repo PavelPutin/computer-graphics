@@ -1,12 +1,13 @@
-package ru.vsu.cs.putin_p_a.task2.gui;
+package ru.vsu.cs.putin_p_a.redactors_tasks.gui;
 
-import ru.vsu.cs.putin_p_a.task2.logic.Redactor;
-import ru.vsu.cs.putin_p_a.task2.logic.shapes.HomogeneousCoordinates2d;
-import ru.vsu.cs.putin_p_a.task2.logic.shapes.Point2d;
-import ru.vsu.cs.putin_p_a.task2.logic.transformations.*;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.Redactor;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.HomogeneousCoordinates2d;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.Point2d;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.math.BigDecimal;
 
 public class MainWindow extends JFrame {
     public static final Dimension INITIAL = new Dimension(800, 600);
@@ -201,13 +202,15 @@ public class MainWindow extends JFrame {
             drawPanel.setTransformOriginPoint(new Point2d(x, y, 1, 3));
             drawPanel.repaint();
             canAddTransform = true;
+            canSetTransformOrigin = false;
             transformationPanel.setVisible(canAddTransform);
+            applyTransformOrigin.setEnabled(canSetTransformOrigin);
         });
 
         applyRotation.addActionListener(e -> {
             double angle = Double.parseDouble(rotationValue.getText());
             double theta = angle * Math.PI / 180;
-            redactor.addTransformation(new Rotation(theta));
+            redactor.addTransformation(new Rotation(BigDecimal.valueOf(theta)));
             drawPanel.setTargetPreview(redactor.getPreview());
             drawPanel.repaint();
         });
@@ -215,7 +218,7 @@ public class MainWindow extends JFrame {
         applyScale.addActionListener(e -> {
             double scale = Double.parseDouble(scaleValue.getText());
             try {
-                redactor.addTransformation(new Scale(scale));
+                redactor.addTransformation(new Scale(BigDecimal.valueOf(scale)));
                 exceptionLabel.setText("");
             } catch (RuntimeException exception) {
                 exceptionLabel.setText(exception.getMessage());
@@ -227,7 +230,7 @@ public class MainWindow extends JFrame {
         applyScaleX.addActionListener(e -> {
             double scale = Double.parseDouble(scaleXValue.getText());
             try {
-                redactor.addTransformation(new ScaleX(scale));
+                redactor.addTransformation(new ScaleX(BigDecimal.valueOf(scale)));
                 exceptionLabel.setText("");
             }  catch (RuntimeException exception) {
                 exceptionLabel.setText(exception.getMessage());
@@ -239,7 +242,7 @@ public class MainWindow extends JFrame {
         applyScaleY.addActionListener(e -> {
             double scale = Double.parseDouble(scaleYValue.getText());
             try {
-                redactor.addTransformation(new ScaleY(scale));
+                redactor.addTransformation(new ScaleY(BigDecimal.valueOf(scale)));
                 exceptionLabel.setText("");
             } catch (RuntimeException exception) {
                 exceptionLabel.setText(exception.getMessage());
@@ -263,7 +266,7 @@ public class MainWindow extends JFrame {
         applyTranslate.addActionListener(e -> {
             double translateX = Double.parseDouble(translateXValue.getText());
             double translateY = Double.parseDouble(translateYValue.getText());
-            redactor.addTransformation(new Translation(translateX, translateY));
+            redactor.addTransformation(new Translation(BigDecimal.valueOf(translateX), BigDecimal.valueOf(translateY)));
             drawPanel.setTargetPreview(redactor.getPreview());
             drawPanel.repaint();
         });
@@ -273,6 +276,10 @@ public class MainWindow extends JFrame {
             drawPanel.setTarget(redactor.getCurrent());
             drawPanel.setTargetPreview(redactor.getPreview());
             drawPanel.repaint();
+            canSetTransformOrigin = true;
+            canAddTransform = false;
+            applyTransformOrigin.setEnabled(canSetTransformOrigin);
+            transformationPanel.setVisible(canAddTransform);
         });
         removeTransform.addActionListener(e -> {
             redactor.removeLastTransformation();
