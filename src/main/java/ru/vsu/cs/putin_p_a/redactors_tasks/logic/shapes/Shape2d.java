@@ -1,9 +1,9 @@
-package ru.vsu.cs.putin_p_a.task2.logic.shapes;
+package ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes;
 
-import ru.vsu.cs.putin_p_a.task2.logic.matrix_algebra.Matrix;
-import ru.vsu.cs.putin_p_a.task2.logic.transformations.AffineTransformation;
-import ru.vsu.cs.putin_p_a.task2.logic.transformations.Translation;
+import ru.vsu.cs.putin_p_a.redactors_tasks.math_utils.matrix_algebra.Matrix;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.AffineTransformation;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +25,7 @@ abstract public class Shape2d implements Cloneable{
     }
 
     public Matrix getMatrixVertexes() {
-        List<List<Double>> coords = new ArrayList<>();
+        List<List<BigDecimal>> coords = new ArrayList<>();
         for (HomogeneousCoordinates2d vertex : vertexes) {
             coords.add(vertex.getValues());
         }
@@ -35,7 +35,7 @@ abstract public class Shape2d implements Cloneable{
     public void transform(AffineTransformation t) {
         Matrix transformedCoordinates = getMatrixVertexes().multiply(t.getTransformation());
         int i = 0;
-        for (List<Double> row : transformedCoordinates.getValues()) {
+        for (List<BigDecimal> row : transformedCoordinates.getValues()) {
             vertexes.set(i++, new HomogeneousCoordinates2d(row));
         }
     }

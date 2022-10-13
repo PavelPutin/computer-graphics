@@ -1,10 +1,11 @@
-package ru.vsu.cs.putin_p_a.task2.logic;
+package ru.vsu.cs.putin_p_a.redactors_tasks.logic;
 
-import ru.vsu.cs.putin_p_a.task2.logic.shapes.*;
-import ru.vsu.cs.putin_p_a.task2.logic.transformations.AffineTransformation;
-import ru.vsu.cs.putin_p_a.task2.logic.transformations.EmptyTransformation;
-import ru.vsu.cs.putin_p_a.task2.logic.transformations.Translation;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.*;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.AffineTransformation;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.EmptyTransformation;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.Translation;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -49,9 +50,16 @@ public class Redactor {
     }
 
     public void addTransformation(AffineTransformation t) {
-        Translation t1 = new Translation(-transformOrigin.getX(), -transformOrigin.getY()),
-                t2 = new Translation(transformOrigin.getX(), transformOrigin.getY());
+        Translation t1 = new Translation(
+                transformOrigin.getX().multiply(BigDecimal.valueOf(-1)),
+                transformOrigin.getY().multiply(BigDecimal.valueOf(-1))
+                );
+        Translation t2 = new Translation(
+                transformOrigin.getX(),
+                transformOrigin.getY()
+        );
         AffineTransformation relativeTransform = t1.then(t).then(t2);
+
         selectedTransformations.push(relativeTransform);
         if (preview == null) {
             preview = new Path2d(current.getVertexes());
@@ -73,9 +81,15 @@ public class Redactor {
     }
 
     public void applyTransformations() {
-        if (preview != null) {
-            current = new Path2d(preview.getVertexes());
+//        if (preview != null) {
+//            current = new Path2d(preview.getVertexes());
+//        }
+//        preview = null;
+        AffineTransformation resultT = new EmptyTransformation();
+        while (!selectedTransformations.isEmpty()) {
+            resultT = resultT.then(selectedTransformations.pop());
         }
+        current.transform(resultT);
         preview = null;
     }
 

@@ -1,38 +1,53 @@
-package ru.vsu.cs.putin_p_a.task2.logic.matrix_algebra;
+package ru.vsu.cs.putin_p_a.redactors_tasks.math_utils.matrix_algebra;
 
+import ru.vsu.cs.putin_p_a.redactors_tasks.math_utils.MathConstants;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Matrix {
-    private final List<List<Double>> values;
+    private final List<List<BigDecimal>> values = new ArrayList<>();
 
-    {
-        this.values = new ArrayList<>();
+    public Matrix(double[][] values) {
+        for (double[] row : values) {
+            List<BigDecimal> newRow = new ArrayList<>();
+            this.values.add(newRow);
+            for (Double value : row) {
+                newRow.add(BigDecimal.valueOf(value));
+            }
+        }
     }
 
-    public Matrix(List<List<Double>> values) {
-        for (List<Double> row : values) {
-            List<Double> newRow = new ArrayList<>();
+    public Matrix(List<List<BigDecimal>> values) {
+        for (List<BigDecimal> row : values) {
+            List<BigDecimal> newRow = new ArrayList<>();
             this.values.add(newRow);
             newRow.addAll(row);
         }
     }
 
-    public Matrix(double[][] values) {
-        for (double[] row : values) {
-            List<Double> newRow = new ArrayList<>();
+    public Matrix(BigDecimal[][] values) {
+        for (BigDecimal[] row : values) {
+            List<BigDecimal> newRow = new ArrayList<>();
             this.values.add(newRow);
-            for (Double value : row) {
-                newRow.add(value);
-            }
+            newRow.addAll(Arrays.asList(row));
         }
     }
 
-    public List<List<Double>> getValues() {
-        return new ArrayList<>(values);
+    public List<List<BigDecimal>> getValues() {
+        List<List<BigDecimal>> doubleValues = new ArrayList<>();
+        for (List<BigDecimal> row : values) {
+            List<BigDecimal> newRow = new ArrayList<>();
+            doubleValues.add(newRow);
+            newRow.addAll(row);
+        }
+        return doubleValues;
     }
 
-    public double getValue(int i, int j) {
+    public BigDecimal getValue(int i, int j) {
         return values.get(i).get(j);
     }
 
@@ -45,14 +60,14 @@ public class Matrix {
     }
 
     public Matrix multiply(Matrix other) {
-        List<List<Double>> resultValues = new ArrayList<>();
-        for (List<Double> value : this.values) {
-            List<Double> newRow = new ArrayList<>();
+        List<List<BigDecimal>> resultValues = new ArrayList<>();
+        for (List<BigDecimal> row : this.values) {
+            List<BigDecimal> newRow = new ArrayList<>();
             resultValues.add(newRow);
             for (int columnIndex = 0; columnIndex < other.getColumnNumber(); columnIndex++) {
-                double result = 0;
+                BigDecimal result = BigDecimal.ZERO;
                 for (int k = 0; k < other.getRowsNumber(); k++) {
-                    result += value.get(k) * other.getValue(k, columnIndex);
+                    result = result.add(row.get(k).multiply(other.getValue(k, columnIndex)));
                 }
                 newRow.add(result);
             }
@@ -60,27 +75,28 @@ public class Matrix {
         return new Matrix(resultValues);
     }
 
-    public double getDeterminant() {
+    public BigDecimal getDeterminant() {
         if (getColumnNumber() == 1) {
             return values.get(0).get(0);
         }
 
-        double determinant = 0;
+        BigDecimal determinant = BigDecimal.ZERO;
         for (int i = 0; i < getColumnNumber(); i++) {
-            determinant += values.get(0).get(i) * getAlgebraicAdjunct(0, i);
+            determinant = determinant.add(values.get(0).get(i).multiply(getAlgebraicAdjunct(0, i)));
         }
         return determinant;
     }
 
-    public double getAlgebraicAdjunct(int i, int j) {
-        return ((i + j) % 2 == 0 ? 1 : -1) * getMinor(i, j);
+    public BigDecimal getAlgebraicAdjunct(int i, int j) {
+        BigDecimal k = (i + j) % 2 == 0 ? BigDecimal.ONE : BigDecimal.ONE.multiply(BigDecimal.valueOf(-1));
+        return k.multiply(getMinor(i, j));
     }
 
-    public double getMinor(int i, int j) {
-        List<List<Double>> minorValues = new ArrayList<>();
+    public BigDecimal getMinor(int i, int j) {
+        List<List<BigDecimal>> minorValues = new ArrayList<>();
         for (int row = 0; row < getRowsNumber(); row++) {
             if (row != i) {
-                List<Double> minorRow = new ArrayList<>();
+                List<BigDecimal> minorRow = new ArrayList<>();
                 for (int column = 0; column < getColumnNumber(); column++) {
                     if (column != j) {
                         minorRow.add(values.get(row).get(column));
@@ -93,7 +109,7 @@ public class Matrix {
     }
 
     public Matrix getTransposed() {
-        double[][] transposed = new double[getRowsNumber()][getColumnNumber()];
+        BigDecimal[][] transposed = new BigDecimal[getRowsNumber()][getColumnNumber()];
         for (int i = 0; i < getRowsNumber(); i++) {
             for (int j = i; j < getColumnNumber(); j++) {
                 transposed[i][j] = values.get(j).get(i);
@@ -104,16 +120,16 @@ public class Matrix {
     }
 
     public Matrix getInverse() {
-        double det = getDeterminant();
-        if (det == 0) {
+        BigDecimal det = getDeterminant();
+        if (det.equals(BigDecimal.ZERO)) {
             throw new RuntimeException("Нельзя найти обратную матрицу, если определитель равен 0");
         }
 
-        List<List<Double>> inverseValues = new ArrayList<>();
+        List<List<BigDecimal>> inverseValues = new ArrayList<>();
         for (int i = 0; i < getRowsNumber(); i++) {
-            List<Double> row = new ArrayList<>();
+            List<BigDecimal> row = new ArrayList<>();
             for (int j = 0; j < getColumnNumber(); j++) {
-                row.add(getAlgebraicAdjunct(i, j) / det);
+                row.add(getAlgebraicAdjunct(i, j).divide(det, MathConstants.DIVISION_SCALE, RoundingMode.HALF_UP));
             }
             inverseValues.add(row);
         }
@@ -125,7 +141,7 @@ public class Matrix {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         int i = 0;
-        for (List<Double> row : values) {
+        for (List<BigDecimal> row : values) {
             String firstChar = "|";
             String lastChar = "|";
             if (i == 0) {
@@ -141,7 +157,7 @@ public class Matrix {
             }
             sb.append(firstChar);
             boolean printTab = false;
-            for (Double value : row) {
+            for (BigDecimal value : row) {
                 if (printTab) {
                     sb.append("\t");
                 }

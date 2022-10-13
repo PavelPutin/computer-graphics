@@ -1,12 +1,13 @@
-package ru.vsu.cs.putin_p_a.task2.gui;
+package ru.vsu.cs.putin_p_a.redactors_tasks.gui;
 
-import ru.vsu.cs.putin_p_a.task2.logic.shapes.Line;
-import ru.vsu.cs.putin_p_a.task2.logic.shapes.Point2d;
-import ru.vsu.cs.putin_p_a.task2.logic.shapes.Shape2d;
-import ru.vsu.cs.putin_p_a.task2.logic.transformations.*;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.Line;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.Point2d;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.Shape2d;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.math.BigDecimal;
 
 public class DrawPanel extends JPanel {
     private Shape2d target;
@@ -39,9 +40,9 @@ public class DrawPanel extends JPanel {
         int widthHalf = getSize().width / 2,
                 heightHalf = getSize().height / 2;
 
-        AffineTransformation cs = new CoordinateSystem(new Rotation(Math.PI)
+        AffineTransformation cs = new CoordinateSystem(new Rotation(BigDecimal.valueOf(Math.PI))
                 .then(new ReflectionX())
-                .then(new Translation(widthHalf, heightHalf)));
+                .then(new Translation(BigDecimal.valueOf(widthHalf), BigDecimal.valueOf(heightHalf))));
         Drawer2d d = new Drawer2d(g, cs);
 
         Color old = g.getColor();

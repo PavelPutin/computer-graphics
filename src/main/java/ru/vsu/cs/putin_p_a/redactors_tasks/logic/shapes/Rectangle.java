@@ -1,4 +1,4 @@
-package ru.vsu.cs.putin_p_a.task2.logic.shapes;
+package ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes;
 
 public class Rectangle extends Shape2d {
     public Rectangle(double x, double y, double h, double width, double height) {
