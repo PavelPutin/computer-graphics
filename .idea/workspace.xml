@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Переписал математический движок на BigDecimal">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/math_utils/Trigonometry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/transformations/Rotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/transformations/Rotation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/math_utils/MathConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/math_utils/MathConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +55,8 @@
   </component>
   <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.putin_p_a.task2.Application" />
-      <module name="computer-graphics" />
+      <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.putin_p_a.redactors_tasks.Application" />
+      <module name="ComputerGraphics" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.vsu.cs.putin_p_a.task2.*" />

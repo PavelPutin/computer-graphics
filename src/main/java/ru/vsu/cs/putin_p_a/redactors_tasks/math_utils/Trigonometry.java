@@ -17,7 +17,6 @@ public class Trigonometry {
 
 
     private static double roundToZeroOrOne(double result) {
-        System.out.println(abs(result));
         if (abs(result) <= MathConstants.PRECISION) {
             return 0;
         }
