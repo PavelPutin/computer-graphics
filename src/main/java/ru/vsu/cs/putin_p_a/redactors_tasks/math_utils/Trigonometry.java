@@ -2,7 +2,8 @@ package ru.vsu.cs.putin_p_a.redactors_tasks.math_utils;
 
 import static java.lang.Math.abs;
 
-public class Trigonometry {
+public final class Trigonometry {
+    private Trigonometry() {}
     public static double cos(double value) {
         double result = Math.cos(value);
         result = roundToZeroOrOne(result);
