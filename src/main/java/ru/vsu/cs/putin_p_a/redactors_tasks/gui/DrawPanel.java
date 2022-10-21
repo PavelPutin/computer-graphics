@@ -1,8 +1,8 @@
 package ru.vsu.cs.putin_p_a.redactors_tasks.gui;
 
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.Line;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.Point2d;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.Shape2d;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Line;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Point2d;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Shape2d;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.*;
 
 import javax.swing.*;

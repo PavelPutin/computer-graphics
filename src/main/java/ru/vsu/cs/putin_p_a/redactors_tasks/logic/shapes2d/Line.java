@@ -1,4 +1,4 @@
-package ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes;
+package ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d;
 
 public class Line extends Shape2d {
     public Line(

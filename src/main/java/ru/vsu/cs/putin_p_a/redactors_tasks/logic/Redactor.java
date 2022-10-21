@@ -1,6 +1,6 @@
 package ru.vsu.cs.putin_p_a.redactors_tasks.logic;
 
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.*;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.*;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.AffineTransformation;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.EmptyTransformation;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.Translation;

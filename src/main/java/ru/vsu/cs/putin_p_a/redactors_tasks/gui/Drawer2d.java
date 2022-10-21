@@ -1,8 +1,8 @@
 package ru.vsu.cs.putin_p_a.redactors_tasks.gui;
 
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.HomogeneousCoordinates2d;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.Point2d;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes.Shape2d;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.HomogeneousCoordinates2d;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Point2d;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Shape2d;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.AffineTransformation;
 
 import java.awt.Graphics;
