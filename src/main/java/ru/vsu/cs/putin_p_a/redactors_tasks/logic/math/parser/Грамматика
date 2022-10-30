@@ -87,13 +87,14 @@ sum = (multiplication|division)(+(multiplication|division))*
 subtraction = (multiplication|division)(-(multiplication|division))*
 multiplication = (term(*term)*)|(\(expression(\*expression)*\))
 division = (term(/term)*)|(\(expression(\/expression)*\))
+parentheses = \(expression\)|\|abs\|
 term = number|parameter|specialValues
 number = \-?[0-9]+(\.[0-9]+)?
 parameter = [a-zA-Z]+
 specialValues = (pi|e)
 space = \s+
 
-Пятая итерация:
+Шестая итерация:
     Число и параметр и специальное значение и функции
     Скобки
     Возведение в степень
@@ -107,8 +108,53 @@ subtraction = (multiplication|division)(-(multiplication|division))*
 multiplication = (exponential(*exponential)*)
 division = (exponential(/exponential)*)
 exponential = (term(^term)*)|(\(expression(\/expression)^\))
+parentheses = \(expression\)|\|abs\|
 term = number|parameter|specialValues
 number = \-?[0-9]+(\.[0-9]+)?
 parameter = [a-zA-Z]+
 specialValues = (pi|e)
 space = \s+
+
+Седьмая итерация:
+    Число и параметр и специальное значение и функции
+    Скобки
+    Возведение в степень
+    Умножение и деление
+    Сумма и вычитание
+    Выражение
+
+expression = sum|subtraction
+sum = (multiplication|division)(+(multiplication|division))*
+subtraction = (multiplication|division)(-(multiplication|division))*
+multiplication = (exponential(*exponential)*)
+division = (exponential(/exponential)*)
+exponential = (term(^term)*)|(\(expression(\/expression)^\))
+parentheses = \(expression\)|\|abs\|
+term = number|parameter|specialValues
+number = \-?[0-9]+(\.[0-9]+)?
+parameter = [a-zA-Z]+
+specialValues = (pi|e)
+space = \s+
+
+Седьмая итерация:
+    Число и параметр и специальное значение и функции
+    Скобки
+    Унарный минус
+    Возведение в степень
+    Умножение и деление
+    Сумма и вычитание
+    Выражение
+
+expression      = sum|subtraction
+sum             = (multiplication|division)(+(multiplication|division))*
+subtraction     = (multiplication|division)(-(multiplication|division))*
+multiplication  = (exponential(\*exponential)*)
+division        = (exponential(/exponential)*)
+exponential     = (term(\^term)*)|(parentheses(\^parentheses)*)|(unary(\^unary)*)
+unary           = -(term|parentheses|unary)
+parentheses     = \(expression\)|\|abs\|
+term            = number|parameter|specialValues
+number          = [0-9]+(\.[0-9]+)?
+parameter       = [a-zA-Z]+
+specialValues   = (pi|e)
+space           = \s+

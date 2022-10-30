@@ -3,10 +3,7 @@ package ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.parser;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.*;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.Number;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.functions.*;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.operations.Division;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.operations.Multiplication;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.operations.Subtraction;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.operations.Sum;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.operations.*;
 
 import java.math.BigDecimal;
 
@@ -20,6 +17,7 @@ public class MathFunctionParser {
     }
 
     public BasicExpression parse() {
+        space();
         return expression();
     }
 
@@ -32,6 +30,7 @@ public class MathFunctionParser {
 
         while (!isEndOfLine() && (source.charAt(pivot) == '+' || source.charAt(pivot) == '-')) {
             char operation = source.charAt(pivot++);
+            space();
             BasicExpression right = multiplicationAndDivision();
             if (operation == '+') {
                 result = new Sum(result, right);
@@ -43,22 +42,12 @@ public class MathFunctionParser {
     }
 
     private BasicExpression multiplicationAndDivision() {
-        BasicExpression result;
-        if (!isEndOfLine() && source.charAt(pivot) == '(') {
-            result = parentheses();
-        } else {
-            result = term();
-        }
+        BasicExpression result = exponential();
 
         while (!isEndOfLine() && (source.charAt(pivot) == '*' || source.charAt(pivot) == '/')) {
             char operation = source.charAt(pivot++);
-            BasicExpression right;
             space();
-            if (!isEndOfLine() && source.charAt(pivot) == '(') {
-                right = parentheses();
-            } else {
-                right = term();
-            }
+            BasicExpression right = exponential();
             if (operation == '*') {
                 result = new Multiplication(result, right);
             } else if (operation == '/') {
@@ -68,22 +57,67 @@ public class MathFunctionParser {
         return result;
     }
 
+    private BasicExpression exponential() {
+        BasicExpression result;
+        if (!isEndOfLine() && isBracket()) {
+            result = parentheses();
+        } else if (!isEndOfLine() && source.charAt(pivot) == '-') {
+            result = unaryMinus();
+        } else {
+            result = term();
+        }
 
+        while (!isEndOfLine() && source.charAt(pivot) == '^') {
+            BasicExpression right;
+            pivot++;
+            space();
+            if (!isEndOfLine() && isBracket()) {
+                right = parentheses();
+            } else if (!isEndOfLine() && source.charAt(pivot) == '-') {
+                right = unaryMinus();
+            } else {
+                right = term();
+            }
+            result = new Exponential(result, right);
+        }
+        return result;
+    }
+
+    private BasicExpression unaryMinus() {
+        if (!isEndOfLine() && source.charAt(pivot) == '-') {
+            pivot++;
+            space();
+        }
+        BasicExpression inner;
+        if (!isEndOfLine() && isBracket()) {
+            inner = parentheses();
+        } else if (!isEndOfLine() && source.charAt(pivot) == '-') {
+            inner = unaryMinus();
+        } else {
+            inner = term();
+        }
+        space();
+        return new UnaryMinus(inner);
+    }
 
     private BasicExpression parentheses() {
         space();
-        boolean brackets = false;
-        if (source.charAt(pivot) == '(') {
-            brackets = true;
+        char emptyChar = '0';
+        char bracket = emptyChar;
+        if (isBracket()) {
+            bracket = source.charAt(pivot);
             pivot++;
             space();
         }
 
         BasicExpression result = expression();
+        if (bracket == '|') {
+            result = new Abs(result);
+        }
 
         space();
-        if (brackets) {
-            if (source.charAt(pivot) == ')') {
+        if (bracket != emptyChar) {
+            if (source.charAt(pivot) == ')' || source.charAt(pivot) == '|') {
                 pivot++;
                 space();
             } else {
@@ -95,57 +129,61 @@ public class MathFunctionParser {
 
     private BasicExpression term() {
         space();
-        String result = "";
         if (Character.isAlphabetic(source.charAt(pivot))) {
-            while (!isEndOfLine() && Character.isAlphabetic(source.charAt(pivot))) {
-                result += source.charAt(pivot++);
-            }
-            space();
-            if (source.charAt(pivot) == '(') {
-                BasicExpression innerFunction = parentheses();
-                if (result.equalsIgnoreCase("sin")) {
-                    return new Sin(innerFunction);
-                }
-                if (result.equalsIgnoreCase("cos")) {
-                    return new Cos(innerFunction);
-                }
-                if (result.equalsIgnoreCase("Tg")) {
-                    return new Tg(innerFunction);
-                }
-                if (result.equalsIgnoreCase("ctg")) {
-                    return new Ctg(innerFunction);
-                }
-                if (result.equalsIgnoreCase("sqrt")) {
-                    return new Sqrt(innerFunction);
-                }
-            }
-            if (result.equalsIgnoreCase("pi")) {
-                return new Pi();
-            }
-            if (result.equalsIgnoreCase("e")) {
-                return new E();
-            }
-            return new Variable(result);
+            return variableAndFunctionAndSpecialValue();
         } else {
-            if (source.charAt(pivot) == '-') {
-                result += '-';
-                pivot++;
-            }
-
-            int dotCounter = 0;
-            while (!isEndOfLine() && (Character.isDigit(source.charAt(pivot)) || source.charAt(pivot) == '.')) {
-                if (source.charAt(pivot) == '.') {
-                    dotCounter++;
-                    if (dotCounter > 1) {
-                        throw new RuntimeException("Много точек");
-                    }
-                }
-                result += source.charAt(pivot++);
-            }
-            space();
-            double parsed = Double.parseDouble(result);
-            return new Number(new BigDecimal(parsed));
+            return number();
         }
+    }
+
+    private BasicExpression variableAndFunctionAndSpecialValue() {
+        String result = "";
+        while (!isEndOfLine() && Character.isAlphabetic(source.charAt(pivot))) {
+            result += source.charAt(pivot++);
+        }
+        space();
+        if (source.charAt(pivot) == '(') {
+            BasicExpression innerFunction = parentheses();
+            if (result.equalsIgnoreCase("sin")) {
+                return new Sin(innerFunction);
+            }
+            if (result.equalsIgnoreCase("cos")) {
+                return new Cos(innerFunction);
+            }
+            if (result.equalsIgnoreCase("tg")) {
+                return new Tg(innerFunction);
+            }
+            if (result.equalsIgnoreCase("ctg")) {
+                return new Ctg(innerFunction);
+            }
+            if (result.equalsIgnoreCase("sqrt")) {
+                return new Sqrt(innerFunction);
+            }
+        }
+        if (result.equalsIgnoreCase("pi")) {
+            return new Pi();
+        }
+        if (result.equalsIgnoreCase("e")) {
+            return new E();
+        }
+        return new Variable(result);
+    }
+
+    private BasicExpression number() {
+        String result = "";
+        int dotCounter = 0;
+        while (!isEndOfLine() && (Character.isDigit(source.charAt(pivot)) || source.charAt(pivot) == '.')) {
+            if (source.charAt(pivot) == '.') {
+                dotCounter++;
+                if (dotCounter > 1) {
+                    throw new RuntimeException("Много точек");
+                }
+            }
+            result += source.charAt(pivot++);
+        }
+        space();
+        double parsed = Double.parseDouble(result);
+        return new Number(new BigDecimal(parsed));
     }
 
     private void space() {
@@ -156,5 +194,9 @@ public class MathFunctionParser {
 
     private boolean isEndOfLine() {
         return pivot >= source.length();
+    }
+
+    private boolean isBracket() {
+        return source.charAt(pivot) == '(' || source.charAt(pivot) == '|';
     }
 }
