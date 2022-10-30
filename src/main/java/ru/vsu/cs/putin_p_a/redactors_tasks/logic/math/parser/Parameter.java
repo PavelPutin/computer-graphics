@@ -1,4 +1,4 @@
-package ru.vsu.cs.putin_p_a.redactors_tasks.math_parser;
+package ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.parser;
 
 import java.math.BigDecimal;
 import java.util.Objects;

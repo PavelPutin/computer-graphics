@@ -1,0 +1,114 @@
+Операции: +, -, *, /, ^, =
+Функции: pow(a, b), sqrt(a), sin(a), cos(a), tg(a), ctg(a), exp(a), abs(a)
+Специальные символы: pi, e
+Скобки: |a|, (a)
+
+Приоритеты операций:
+    Число, переменная, функция, унарный минус
+    Специальные символы
+    Скобки
+    Возведение в степень через циркумфлекс
+    Умножение и деление
+    Сложение и вычитание
+    Выражение
+
+Первая итерация:
+    Число
+    Сумма и вычитание
+    Выражение
+
+expression = sum|subtraction
+sum = number(+number)*
+subtraction = number(-number)*
+number = \-?[0-9]+(\.[0-9]+)?
+space = \s+
+
+
+Вторая итерация:
+    Число и параметр и специальное значение
+    Сумма и вычитание
+    Выражение
+
+expression = sum|subtraction
+sum = term(+term)*
+subtraction = term(-term)*
+term = number|parameter|specialValues
+number = \-?[0-9]+(\.[0-9]+)?
+parameter = [a-zA-Z]+
+specialValues = (pi|e)
+space = \s+
+
+Третья итерация:
+    Число и параметр и специальное значение
+    Умножение и деление
+    Сумма и вычитание
+    Выражение
+
+expression = sum|subtraction
+sum = (multiplication|division)(+(multiplication|division))*
+subtraction = (multiplication|division)(-(multiplication|division))*
+multiplication = term(*term)*
+division = term(/term)*
+term = number|parameter|specialValues
+number = \-?[0-9]+(\.[0-9]+)?
+parameter = [a-zA-Z]+
+specialValues = (pi|e)
+space = \s+
+
+
+Четвёртая итерация:
+    Число и параметр и специальное значение
+    Скобки
+    Умножение и деление
+    Сумма и вычитание
+    Выражение
+
+expression = sum|subtraction
+sum = (multiplication|division)(+(multiplication|division))*
+subtraction = (multiplication|division)(-(multiplication|division))*
+multiplication = (term(*term)*)|(\(expression(\*expression)*\))
+division = (term(/term)*)|(\(expression(\/expression)*\))
+term = number|parameter|specialValues
+number = \-?[0-9]+(\.[0-9]+)?
+parameter = [a-zA-Z]+
+specialValues = (pi|e)
+space = \s+
+
+
+Пятая итерация:
+    Число и параметр и специальное значение и функции
+    Скобки
+    Умножение и деление
+    Сумма и вычитание
+    Выражение
+
+expression = sum|subtraction
+sum = (multiplication|division)(+(multiplication|division))*
+subtraction = (multiplication|division)(-(multiplication|division))*
+multiplication = (term(*term)*)|(\(expression(\*expression)*\))
+division = (term(/term)*)|(\(expression(\/expression)*\))
+term = number|parameter|specialValues
+number = \-?[0-9]+(\.[0-9]+)?
+parameter = [a-zA-Z]+
+specialValues = (pi|e)
+space = \s+
+
+Пятая итерация:
+    Число и параметр и специальное значение и функции
+    Скобки
+    Возведение в степень
+    Умножение и деление
+    Сумма и вычитание
+    Выражение
+
+expression = sum|subtraction
+sum = (multiplication|division)(+(multiplication|division))*
+subtraction = (multiplication|division)(-(multiplication|division))*
+multiplication = (exponential(*exponential)*)
+division = (exponential(/exponential)*)
+exponential = (term(^term)*)|(\(expression(\/expression)^\))
+term = number|parameter|specialValues
+number = \-?[0-9]+(\.[0-9]+)?
+parameter = [a-zA-Z]+
+specialValues = (pi|e)
+space = \s+

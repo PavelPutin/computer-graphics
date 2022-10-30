@@ -1,7 +1,7 @@
 package ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations;
 
-import ru.vsu.cs.putin_p_a.redactors_tasks.math_utils.Trigonometry;
-import ru.vsu.cs.putin_p_a.redactors_tasks.math_utils.matrix_algebra.Matrix;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.utils.Trigonometry;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.utils.matrix_algebra.Matrix;
 
 import java.math.BigDecimal;
 

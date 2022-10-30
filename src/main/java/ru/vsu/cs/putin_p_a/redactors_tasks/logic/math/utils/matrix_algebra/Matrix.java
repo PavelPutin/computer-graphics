@@ -1,6 +1,6 @@
-package ru.vsu.cs.putin_p_a.redactors_tasks.math_utils.matrix_algebra;
+package ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.utils.matrix_algebra;
 
-import ru.vsu.cs.putin_p_a.redactors_tasks.math_utils.MathConstants;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.utils.MathConstants;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

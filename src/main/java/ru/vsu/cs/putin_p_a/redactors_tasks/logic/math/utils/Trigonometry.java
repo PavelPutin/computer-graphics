@@ -1,4 +1,4 @@
-package ru.vsu.cs.putin_p_a.redactors_tasks.math_utils;
+package ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.utils;
 
 import static java.lang.Math.abs;
 
