@@ -1,5 +1,6 @@
-package ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression;
+package ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.values;
 
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.BasicExpression;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.parser.Parameter;
 
 import java.math.BigDecimal;

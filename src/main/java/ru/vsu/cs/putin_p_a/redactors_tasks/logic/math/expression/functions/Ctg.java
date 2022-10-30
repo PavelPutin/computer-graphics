@@ -2,7 +2,7 @@ package ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.functions;
 
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.BasicExpression;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.Expression;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.Number;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.values.Number;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.parser.Parameter;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.operations.Exponential;
 

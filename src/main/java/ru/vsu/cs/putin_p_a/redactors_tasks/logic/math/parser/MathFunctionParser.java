@@ -1,9 +1,12 @@
 package ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.parser;
 
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.*;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.Number;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.values.special.E;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.values.Number;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.functions.*;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.operations.*;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.values.special.Pi;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.values.Variable;
 
 import java.math.BigDecimal;
 
@@ -142,7 +145,7 @@ public class MathFunctionParser {
             result += source.charAt(pivot++);
         }
         space();
-        if (source.charAt(pivot) == '(') {
+        if (!isEndOfLine() && source.charAt(pivot) == '(') {
             BasicExpression innerFunction = parentheses();
             if (result.equalsIgnoreCase("sin")) {
                 return new Sin(innerFunction);
