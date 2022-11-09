@@ -14,6 +14,10 @@ public class MathFunctionParser {
     private String source;
     private int pivot;
 
+    public MathFunctionParser(MathFunctionParserUI ui) {
+        this(ui.getRawFunction());
+    }
+
     public MathFunctionParser(String source) {
         this.source = source;
         pivot = 0;

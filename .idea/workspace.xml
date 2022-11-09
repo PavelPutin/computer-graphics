@@ -4,14 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Выполнена седьмая итерация написания парсера функций&#10;&#10;Седьмая итерация:&#10;    Число и параметр и специальное значение и функции&#10;    Скобки&#10;    Унарный минус&#10;    Возведение в степень&#10;    Умножение и деление&#10;    Сумма и вычитание&#10;    Выражение&#10;&#10;expression      = sum|subtraction&#10;sum             = (multiplication|division)(+(multiplication|division))*&#10;subtraction     = (multiplication|division)(-(multiplication|division))*&#10;multiplication  = (exponential(\*exponential)*)&#10;division        = (exponential(/exponential)*)&#10;exponential     = (term(\^term)*)|(parentheses(\^parentheses)*)|(unary(\^unary)*)&#10;unary           = -(term|parentheses|unary)&#10;parentheses     = \(expression\)|\|abs\|&#10;term            = number|parameter|specialValues&#10;number          = [0-9]+(\.[0-9]+)?&#10;parameter       = [a-zA-Z]+&#10;specialValues   = (pi|e)&#10;space           = \s+">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/E.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/values/special/E.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/Number.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/values/Number.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/Pi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/values/special/Pi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/values/Variable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/functions/Ctg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/functions/Ctg.java" afterDir="false" />
+    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Исправлены баги и реорганизованы пакеты">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/ControlPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/FunctionGraphic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/parser/MathFunctionParserUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/plot/Plot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/plot/PlotUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/DrawPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/Drawer2d.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/MainWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/Redactor2d.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/parser/MathFunctionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/parser/MathFunctionParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/parser/Грамматика" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/parser/Грамматика" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +26,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -59,7 +65,7 @@
       <recent name="Task1.MathUtils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ru.vsu.cs.putin_p_a.sandbox.Main">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.putin_p_a.redactors_tasks.Application" />
       <module name="ComputerGraphics" />
@@ -101,8 +107,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ru.vsu.cs.putin_p_a.sandbox.Main" />
         <item itemvalue="Application.Application" />
+        <item itemvalue="Application.ru.vsu.cs.putin_p_a.sandbox.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -124,7 +130,11 @@
       <workItem from="1666808262805" duration="255000" />
       <workItem from="1667047965410" duration="3131000" />
       <workItem from="1667060515100" duration="10512000" />
-      <workItem from="1667124070933" duration="4141000" />
+      <workItem from="1667124070933" duration="4233000" />
+      <workItem from="1667405750434" duration="4159000" />
+      <workItem from="1667482144004" duration="16469000" />
+      <workItem from="1667797438181" duration="5140000" />
+      <workItem from="1668004275208" duration="397000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1663154202254</created>
@@ -350,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667127928617</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Исправлены баги и реорганизованы пакеты">
+      <created>1667128316298</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1667128316298</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,7 +385,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Создана DrawPanel для вывода графической информации" />
     <MESSAGE value="Написал прототип текста-арки" />
     <MESSAGE value="Текст в арке распределяется по угловой мере" />
     <MESSAGE value="Перенёс код рисования текста-арки в отдельный класс" />
@@ -393,23 +409,19 @@
     <MESSAGE value="Реализовал основные математические операции" />
     <MESSAGE value="Выполнена пятая итерация написания парсера функций" />
     <MESSAGE value="Выполнена седьмая итерация написания парсера функций&#10;&#10;Седьмая итерация:&#10;    Число и параметр и специальное значение и функции&#10;    Скобки&#10;    Унарный минус&#10;    Возведение в степень&#10;    Умножение и деление&#10;    Сумма и вычитание&#10;    Выражение&#10;&#10;expression      = sum|subtraction&#10;sum             = (multiplication|division)(+(multiplication|division))*&#10;subtraction     = (multiplication|division)(-(multiplication|division))*&#10;multiplication  = (exponential(\*exponential)*)&#10;division        = (exponential(/exponential)*)&#10;exponential     = (term(\^term)*)|(parentheses(\^parentheses)*)|(unary(\^unary)*)&#10;unary           = -(term|parentheses|unary)&#10;parentheses     = \(expression\)|\|abs\|&#10;term            = number|parameter|specialValues&#10;number          = [0-9]+(\.[0-9]+)?&#10;parameter       = [a-zA-Z]+&#10;specialValues   = (pi|e)&#10;space           = \s+" />
-    <option name="LAST_COMMIT_MESSAGE" value="Выполнена седьмая итерация написания парсера функций&#10;&#10;Седьмая итерация:&#10;    Число и параметр и специальное значение и функции&#10;    Скобки&#10;    Унарный минус&#10;    Возведение в степень&#10;    Умножение и деление&#10;    Сумма и вычитание&#10;    Выражение&#10;&#10;expression      = sum|subtraction&#10;sum             = (multiplication|division)(+(multiplication|division))*&#10;subtraction     = (multiplication|division)(-(multiplication|division))*&#10;multiplication  = (exponential(\*exponential)*)&#10;division        = (exponential(/exponential)*)&#10;exponential     = (term(\^term)*)|(parentheses(\^parentheses)*)|(unary(\^unary)*)&#10;unary           = -(term|parentheses|unary)&#10;parentheses     = \(expression\)|\|abs\|&#10;term            = number|parameter|specialValues&#10;number          = [0-9]+(\.[0-9]+)?&#10;parameter       = [a-zA-Z]+&#10;specialValues   = (pi|e)&#10;space           = \s+" />
+    <MESSAGE value="Исправлены баги и реорганизованы пакеты" />
+    <option name="LAST_COMMIT_MESSAGE" value="Исправлены баги и реорганизованы пакеты" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/parser/MathFunctionParser.java</url>
-          <line>142</line>
+          <line>146</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="source.charAt(pivot)" language="JAVA" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ComputerGraphics$ru_vsu_cs_putin_p_a_sandbox_Main.ic" NAME="ru.vsu.cs.putin_p_a.sandbox.Main Coverage Results" MODIFIED="1667128173690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

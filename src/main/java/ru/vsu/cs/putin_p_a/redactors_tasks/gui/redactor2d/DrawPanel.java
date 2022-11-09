@@ -1,4 +1,4 @@
-package ru.vsu.cs.putin_p_a.redactors_tasks.gui;
+package ru.vsu.cs.putin_p_a.redactors_tasks.gui.redactor2d;
 
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Line;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Point2d;

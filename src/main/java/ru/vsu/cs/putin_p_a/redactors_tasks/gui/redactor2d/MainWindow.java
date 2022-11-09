@@ -1,13 +1,7 @@
-package ru.vsu.cs.putin_p_a.redactors_tasks.gui;
-
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.Redactor;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.HomogeneousCoordinates2d;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Point2d;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.*;
+package ru.vsu.cs.putin_p_a.redactors_tasks.gui.redactor2d;
 
 import javax.swing.*;
 import java.awt.*;
-import java.math.BigDecimal;
 
 public class MainWindow extends JFrame {
     private final JPanel mainPanel;
