@@ -40,9 +40,8 @@ public class DrawPanel extends JPanel {
         int widthHalf = getSize().width / 2,
                 heightHalf = getSize().height / 2;
 
-        AffineTransformation cs = new CoordinateSystem(new Rotation(BigDecimal.valueOf(Math.PI))
-                .then(new ReflectionX())
-                .then(new Translation(BigDecimal.valueOf(widthHalf), BigDecimal.valueOf(heightHalf))));
+        AffineTransformation cs = new CoordinateSystem(new ReflectionY())
+                .then(new Translation(BigDecimal.valueOf(widthHalf), BigDecimal.valueOf(heightHalf)));
         Drawer2d d = new Drawer2d(g, cs);
 
         Color old = g.getColor();

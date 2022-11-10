@@ -4,12 +4,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class BresenhamLineAlgorithm implements LineDrawingAlgorithm{
-    private FunctionGraphic image;
+    private Canvas image;
     private int stroke;
     private Color color;
 
     @Override
-    public void drawLine(FunctionGraphic image, int stroke, int x1, int y1, int x2, int y2, Color color) {
+    public void drawLine(Canvas image, int stroke, int x1, int y1, int x2, int y2, Color color) {
         this.image = image;
         this.stroke = stroke;
         this.color = color;
@@ -40,6 +40,7 @@ public class BresenhamLineAlgorithm implements LineDrawingAlgorithm{
                 for (int i = -stroke / 2; i < stroke / 2; i++) {
                     drawPixel(x, y + i);
                 }
+
                 error += deltaError;
                 if (error >= deltaX + 1) {
                     y += directionY;
@@ -58,6 +59,7 @@ public class BresenhamLineAlgorithm implements LineDrawingAlgorithm{
                 for (int i = -stroke / 2; i < stroke / 2; i++) {
                     drawPixel(x + i, y);
                 }
+
                 error += deltaError;
                 if (error >= deltaY + 1) {
                     x += directionX;
@@ -67,9 +69,10 @@ public class BresenhamLineAlgorithm implements LineDrawingAlgorithm{
         }
     }
 
-    private void drawPixel(int x, int y) {
-        if (image.containPixel(x, y)) {
-            image.setRGB(x, y, color.getRGB());
+    private boolean drawPixel(int x, int y) {
+        if (image.containsPixel(x, y)) {
+            image.setPixel(x, y, color);
         }
+        return image.containsPixel(x, y);
     }
 }

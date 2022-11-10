@@ -5,18 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Исправлены баги и реорганизованы пакеты">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/ControlPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/FunctionGraphic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/parser/MathFunctionParserUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/plot/Plot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/plot/PlotUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/ApplicationMiniDesmos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/Canvas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/CanvasControlPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/DrawPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/ExpressionInputPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/MainFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/MiniDesmosPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/raster_generator/ExpressionInputUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/raster_generator/Plotter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/raster_generator/RasterGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/DrawPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/Drawer2d.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/MainWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/Redactor2d.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/ControlPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/DrawPanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/MiniDesmos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/BresenhamLineAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/BresenhamLineAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/DrawerByPixel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/FunctionGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/FunctionGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/LineDrawingAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/LineDrawingAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/redactor2d/DrawPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/redactor2d/DrawPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/operations/Division.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/operations/Division.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/parser/MathFunctionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/parser/MathFunctionParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/parser/MathFunctionParserUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/plot/Plot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/plot/PlotUI.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +78,26 @@
       <recent name="Task1.MathUtils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Application">
+  <component name="RunManager" selected="Application.ApplicationMiniDesmos">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.putin_p_a.redactors_tasks.Application" />
       <module name="ComputerGraphics" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.vsu.cs.putin_p_a.task2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ApplicationMiniDesmos" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.putin_p_a.ApplicationMiniDesmos" />
+      <module name="ComputerGraphics" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.vsu.cs.putin_p_a.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -107,8 +133,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Application" />
+        <item itemvalue="Application.ApplicationMiniDesmos" />
         <item itemvalue="Application.ru.vsu.cs.putin_p_a.sandbox.Main" />
+        <item itemvalue="Application.Application" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -134,7 +161,9 @@
       <workItem from="1667405750434" duration="4159000" />
       <workItem from="1667482144004" duration="16469000" />
       <workItem from="1667797438181" duration="5140000" />
-      <workItem from="1668004275208" duration="397000" />
+      <workItem from="1668004275208" duration="7416000" />
+      <workItem from="1668059794075" duration="13416000" />
+      <workItem from="1668084618940" duration="9698000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1663154202254</created>
@@ -367,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667128316298</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Исправлены баги и реорганизованы пакеты">
+      <created>1668004757165</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1668004757165</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -411,17 +447,6 @@
     <MESSAGE value="Выполнена седьмая итерация написания парсера функций&#10;&#10;Седьмая итерация:&#10;    Число и параметр и специальное значение и функции&#10;    Скобки&#10;    Унарный минус&#10;    Возведение в степень&#10;    Умножение и деление&#10;    Сумма и вычитание&#10;    Выражение&#10;&#10;expression      = sum|subtraction&#10;sum             = (multiplication|division)(+(multiplication|division))*&#10;subtraction     = (multiplication|division)(-(multiplication|division))*&#10;multiplication  = (exponential(\*exponential)*)&#10;division        = (exponential(/exponential)*)&#10;exponential     = (term(\^term)*)|(parentheses(\^parentheses)*)|(unary(\^unary)*)&#10;unary           = -(term|parentheses|unary)&#10;parentheses     = \(expression\)|\|abs\|&#10;term            = number|parameter|specialValues&#10;number          = [0-9]+(\.[0-9]+)?&#10;parameter       = [a-zA-Z]+&#10;specialValues   = (pi|e)&#10;space           = \s+" />
     <MESSAGE value="Исправлены баги и реорганизованы пакеты" />
     <option name="LAST_COMMIT_MESSAGE" value="Исправлены баги и реорганизованы пакеты" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/parser/MathFunctionParser.java</url>
-          <line>146</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ComputerGraphics$ru_vsu_cs_putin_p_a_sandbox_Main.ic" NAME="ru.vsu.cs.putin_p_a.sandbox.Main Coverage Results" MODIFIED="1667128173690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
