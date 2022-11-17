@@ -14,6 +14,9 @@ public final class Sqrt extends Expression {
     @Override
     public BigDecimal calculationRule(Parameter...parameters) {
         double tempResult = super.calculationRule(parameters).doubleValue();
+        if (tempResult < 0) {
+            return BigDecimal.ZERO;
+        }
         tempResult = Math.sqrt(tempResult);
         return new BigDecimal(tempResult);
     }

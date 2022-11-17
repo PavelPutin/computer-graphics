@@ -3,6 +3,7 @@ package ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.gui;
 import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.BresenhamLineAlgorithm;
 import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.LineDrawingAlgorithm;
 import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.PixelSetter;
+import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.WuLineAlgorithm;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.*;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ import java.util.Map;
 public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter {
     public static final Color AXIS_COLOR = Color.BLACK;
     public static final Color GRID_LINES = Color.LIGHT_GRAY;
+    public static final Color PLOT_COLOR = Color.BLACK;
     private Graphics g;
     private LineDrawingAlgorithm lineDrawingAlgorithm = new BresenhamLineAlgorithm(this);
     private int mousePressPositionX, mousePressPositionY;
@@ -88,7 +90,7 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
             int y1 = plotYValues[x - 1],
                     y2 = plotYValues[x];
             if (containsPixel(x - 1, y1) && containsPixel(x, y2)) {
-                lineDrawingAlgorithm.drawLine(1, x - 1, y1, x, y2, Color.RED);
+                lineDrawingAlgorithm.drawLine(x - 1, y1, x, y2, PLOT_COLOR);
             }
         }
     }
@@ -115,7 +117,7 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
         CanvasCoordinateSystem cs = startPointTransformsController.getCurrent().canvasCoordinateSystem();
         for (Map.Entry<Integer, Double> pivotX : grid.verticalPivotsX().entrySet()) {
             int x = pivotX.getKey();
-            lineDrawingAlgorithm.drawLine(1, x, 0, x, getHeight(), GRID_LINES);
+            lineDrawingAlgorithm.drawLine(x, 0, x, getHeight(), GRID_LINES);
 
             double xWidth = Math.abs(cs.getEndX() - cs.getStartX());
             String text = formatText(pivotX.getValue(), xWidth);
@@ -125,7 +127,7 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
 
         for (Map.Entry<Integer, Double> pivotY : grid.horizontalPivotsY().entrySet()) {
             int y = pivotY.getKey();
-            lineDrawingAlgorithm.drawLine(1, 0, y, getWidth(), y, GRID_LINES);
+            lineDrawingAlgorithm.drawLine(0, y, getWidth(), y, GRID_LINES);
 
             double yWidth = Math.abs(cs.getEndY() - cs.getStartX());
             String text = formatText(pivotY.getValue(), yWidth);
@@ -134,8 +136,8 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
             g.drawString(text, textX, y);
         }
 
-        lineDrawingAlgorithm.drawLine(1, grid.centerX(), 0, grid.centerX(), getHeight(), AXIS_COLOR);
-        lineDrawingAlgorithm.drawLine(1, 0, grid.centerY(), getWidth(), grid.centerY(), AXIS_COLOR);
+        lineDrawingAlgorithm.drawLine(grid.centerX(), 0, grid.centerX(), getHeight(), AXIS_COLOR);
+        lineDrawingAlgorithm.drawLine(0, grid.centerY(), getWidth(), grid.centerY(), AXIS_COLOR);
     }
 
     private int getTextCoordinate(int center, int minValue, int maxValue, int gap) {

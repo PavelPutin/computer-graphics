@@ -3,8 +3,7 @@ package ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer;
 import java.awt.*;
 
 public class BresenhamLineAlgorithm implements LineDrawingAlgorithm{
-    private PixelSetter image;
-    private int stroke;
+    private final PixelSetter image;
     private Color color;
 
     public BresenhamLineAlgorithm(PixelSetter image) {
@@ -12,8 +11,7 @@ public class BresenhamLineAlgorithm implements LineDrawingAlgorithm{
     }
 
     @Override
-    public void drawLine(int stroke, int x1, int y1, int x2, int y2, Color color) {
-        this.stroke = stroke;
+    public void drawLine(int x1, int y1, int x2, int y2, Color color) {
         this.color = color;
 
         int deltaX = Math.abs(x2 - x1);
@@ -35,14 +33,7 @@ public class BresenhamLineAlgorithm implements LineDrawingAlgorithm{
             int directionY = startY < endY ? 1 : -1;
 
             for (int x = startX; x < endX; x++) {
-                for (int i = 0; i <= stroke / 2; i++) {
-                    drawPixel(x, y - i);
-                }
                 drawPixel(x, y);
-                for (int i = -stroke / 2; i < stroke / 2; i++) {
-                    drawPixel(x, y + i);
-                }
-
                 error += deltaError;
                 if (error >= deltaX + 1) {
                     y += directionY;
@@ -54,14 +45,7 @@ public class BresenhamLineAlgorithm implements LineDrawingAlgorithm{
             int directionX = startX < endX ? 1 : -1;
 
             for (int y = startY; y <= endY; y++) {
-                for (int i = 0; i <= stroke / 2; i++) {
-                    drawPixel(x - i, y);
-                }
                 drawPixel(x, y);
-                for (int i = -stroke / 2; i < stroke / 2; i++) {
-                    drawPixel(x + i, y);
-                }
-
                 error += deltaError;
                 if (error >= deltaY + 1) {
                     x += directionX;

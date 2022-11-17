@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Сделал интерактивную сетку">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/MathFunctionParsingPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/ParameterInputUnit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/ParametersInputPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/CreationCalculatorListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/MathFunctionInputController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/ParameterUpdatingListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/ParametersInputController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/ParsingErrorListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/PlotGenerator.java" afterDir="false" />
+    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Сделал рисование графика с параметрами">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/WuLineAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/BresenhamLineAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/BresenhamLineAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/LineDrawingAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/drawer/LineDrawingAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/MiniDesmosFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/MiniDesmosFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/operations/BinaryExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/operations/BinaryExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/CoordinateSystemGridGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/CoordinateSystemGridGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/functions/Sqrt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/expression/functions/Sqrt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,8 +119,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ApplicationMiniDesmos" />
-        <item itemvalue="Application.ru.vsu.cs.putin_p_a.sandbox.Main" />
         <item itemvalue="Application.Application" />
+        <item itemvalue="Application.ru.vsu.cs.putin_p_a.sandbox.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -162,7 +152,7 @@
       <workItem from="1668441472309" duration="961000" />
       <workItem from="1668510064296" duration="2666000" />
       <workItem from="1668618158448" duration="11628000" />
-      <workItem from="1668662281534" duration="23994000" />
+      <workItem from="1668662281534" duration="31612000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1663154202254</created>
@@ -416,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668682858805</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Сделал рисование графика с параметрами">
+      <created>1668701109519</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1668701109519</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,7 +431,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Перенёс код рисования текста-арки в отдельный класс" />
     <MESSAGE value="Создал для удобства классы отрисоки осей координат" />
     <MESSAGE value="Провёл рефакторинг класса ArcText" />
     <MESSAGE value="Добавил угловые отступы для текста" />
@@ -459,7 +455,8 @@
     <MESSAGE value="Исправлены баги и реорганизованы пакеты" />
     <MESSAGE value="Отображается график" />
     <MESSAGE value="Сделал интерактивную сетку" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал интерактивную сетку" />
+    <MESSAGE value="Сделал рисование графика с параметрами" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал рисование графика с параметрами" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
