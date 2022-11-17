@@ -7,7 +7,7 @@ import java.awt.image.IndexColorModel;
 import java.awt.image.WritableRaster;
 import java.util.Hashtable;
 
-public class FunctionGraphic extends BufferedImage implements Canvas {
+public class FunctionGraphic extends BufferedImage implements PixelSetter {
     public FunctionGraphic(int width, int height, int imageType) {
         super(width, height, imageType);
     }

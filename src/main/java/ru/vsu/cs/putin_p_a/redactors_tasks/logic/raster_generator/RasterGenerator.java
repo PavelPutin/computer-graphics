@@ -63,14 +63,12 @@ abstract public class RasterGenerator {
         for (int i = centerY - gridStep; i >= 0; i -= gridStep) {
             Point2d point2d = new Point2d(0, i, 1, 1);
             point2d.transform(coordinateSystem);
-            System.out.println(String.format("%.2f", point2d.getY().doubleValue()));
             yPivots.put(i, String.format("%.2f", point2d.getY().doubleValue()));
         }
 
         for (int i = centerY + gridStep; i < height; i += gridStep) {
             Point2d point2d = new Point2d(0, i, 1, 1);
             point2d.transform(coordinateSystem);
-            System.out.println(String.format("%.2f", point2d.getY().doubleValue()));
             yPivots.put(i, String.format("%.2f", point2d.getY().doubleValue()));
         }
 
