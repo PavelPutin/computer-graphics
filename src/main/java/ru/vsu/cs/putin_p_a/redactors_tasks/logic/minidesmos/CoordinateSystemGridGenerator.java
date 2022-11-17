@@ -10,8 +10,8 @@ import java.util.Map;
 public class CoordinateSystemGridGenerator extends RasterGenerator implements StartPointPositionUpdatingListener{
     public static final int SEGMENTS_QUANTITY = 10;
 
-    public CoordinateSystemGrid getCoordinateSystemGrid(StartPointTransforms startPointPosition) {
-        CanvasCoordinateSystem cs = startPointPosition.canvasCoordinateSystem();
+    public CoordinateSystemGrid getCoordinateSystemGrid(StartPointTransforms startPointTransforms) {
+        CanvasCoordinateSystem cs = startPointTransforms.canvasCoordinateSystem();
 
         double realWidth = Math.abs(cs.getStartX() - cs.getEndX());
         double decadeX = realWidth / SEGMENTS_QUANTITY;

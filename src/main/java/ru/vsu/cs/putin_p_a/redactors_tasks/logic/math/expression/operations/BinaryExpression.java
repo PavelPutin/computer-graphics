@@ -11,6 +11,7 @@ public abstract class BinaryExpression extends BasicExpression {
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;
         this.getParameterNames().addAll(leftOperand.getParameterNames());
+        this.getParameterNames().addAll(rightOperand.getParameterNames());
     }
 
     public BasicExpression getLeftOperand() {

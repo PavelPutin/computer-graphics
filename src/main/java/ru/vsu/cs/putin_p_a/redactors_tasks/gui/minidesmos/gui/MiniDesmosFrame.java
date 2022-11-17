@@ -1,32 +1,47 @@
 package ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.gui;
 
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.CoordinateSystemGrid;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.Model;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.StartPointTransforms;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.parser.Parameter;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class MiniDesmosFrame extends JFrame {
     public MiniDesmosFrame(Model model) throws HeadlessException {
         super();
+        this.setMinimumSize(new Dimension(200, 200));
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         add(mainPanel);
 
         Canvas canvas = new Canvas(
-                model.getStartPointPositionController(),
-                model.getCoordinateSystemGridGenerator()
+                model.startPointTransformsController(),
+                model.getCoordinateSystemGridGenerator(),
+                model.getPlotGenerator()
         );
-        canvas.setPreferredSize(new Dimension(800, 400));
-        mainPanel.add(canvas);
+        canvas.setMinimumSize(new Dimension(200, 200));
 
-        StartPointTransforms startPointPosition = model.getStartPointPositionController().getCurrent();
-        StartPointPositionInfoPanel startPointPositionInfoPanel = new StartPointPositionInfoPanel(startPointPosition);
-        model.getStartPointPositionController()
-                .addStartPointPositionUpdatingListener(startPointPositionInfoPanel);
-        mainPanel.add(startPointPositionInfoPanel);
+        JPanel controlPanel = new JPanel();
+        JScrollPane controlScrollPane = new JScrollPane();
+        controlScrollPane.setViewportView(controlPanel);
+        mainPanel.add(controlScrollPane);
 
+        ParametersInputPanel parametersInputPanel = new ParametersInputPanel();
+        parametersInputPanel.addParametersUpdatingListener(model.getPlotGenerator());
+        controlPanel.add(parametersInputPanel);
+
+        MathFunctionParsingPanel mathFunctionParsingPanel = new MathFunctionParsingPanel(parametersInputPanel);
+        mathFunctionParsingPanel.addCreationCalculatorListener(model.getPlotGenerator());
+        mathFunctionParsingPanel.addParsingErrorListener(e -> {
+            throw e;
+        });
+        controlPanel.add(mathFunctionParsingPanel);
+
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas, controlScrollPane);
+        splitPane.setDividerLocation(240);
+        splitPane.setPreferredSize(new Dimension(800, 800));
+        mainPanel.add(splitPane);
         pack();
     }
 }

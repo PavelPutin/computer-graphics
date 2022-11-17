@@ -19,15 +19,19 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
     private int mousePressPositionX, mousePressPositionY;
     private final StartPointTransformsController startPointTransformsController;
     private final CoordinateSystemGridGenerator coordinateSystemGridGenerator;
+    private final PlotGenerator plotGenerator;
 
     public Canvas(
             StartPointTransformsController startPointTransformsController,
-            CoordinateSystemGridGenerator coordinateSystemGridGenerator
+            CoordinateSystemGridGenerator coordinateSystemGridGenerator,
+            PlotGenerator plotGenerator
     ) {
         super();
         this.startPointTransformsController = startPointTransformsController;
         this.coordinateSystemGridGenerator = coordinateSystemGridGenerator;
         coordinateSystemGridGenerator.addRasterUpdateListener(this);
+        this.plotGenerator = plotGenerator;
+        this.plotGenerator.addRasterUpdateListener(this);
         addMouseWheelListener(new MouseAdapter() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
@@ -35,7 +39,7 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
                 int rotationValue = e.getWheelRotation();
 
                 double userScale = 0.5;
-                if (rotationValue < 0) {
+                if (rotationValue > 0) {
                     userScale = 2;
                 }
                 startPointTransformsController.updateUserScale(e.getX(), e.getY(), userScale);
@@ -74,6 +78,19 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
         StartPointTransforms startPointPosition = startPointTransformsController.getCurrent();
         CoordinateSystemGrid grid = this.coordinateSystemGridGenerator.getCoordinateSystemGrid(startPointPosition);
         drawGrid(grid);
+
+        int[] plotYValues = plotGenerator.plot(startPointPosition);
+        drawPlot(plotYValues);
+    }
+
+    private void drawPlot(int[] plotYValues) {
+        for (int x = 1; x < plotYValues.length; x++) {
+            int y1 = plotYValues[x - 1],
+                    y2 = plotYValues[x];
+            if (containsPixel(x - 1, y1) && containsPixel(x, y2)) {
+                lineDrawingAlgorithm.drawLine(1, x - 1, y1, x, y2, Color.RED);
+            }
+        }
     }
 
     @Override
@@ -95,11 +112,13 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
     }
 
     private void drawGrid(CoordinateSystemGrid grid) {
+        CanvasCoordinateSystem cs = startPointTransformsController.getCurrent().canvasCoordinateSystem();
         for (Map.Entry<Integer, Double> pivotX : grid.verticalPivotsX().entrySet()) {
             int x = pivotX.getKey();
             lineDrawingAlgorithm.drawLine(1, x, 0, x, getHeight(), GRID_LINES);
 
-            String text = formatText(pivotX.getValue());
+            double xWidth = Math.abs(cs.getEndX() - cs.getStartX());
+            String text = formatText(pivotX.getValue(), xWidth);
             int textY = getTextCoordinate(grid.centerY(), 0, getHeight(), 2);
             g.drawString(text, x, textY);
         }
@@ -108,7 +127,8 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
             int y = pivotY.getKey();
             lineDrawingAlgorithm.drawLine(1, 0, y, getWidth(), y, GRID_LINES);
 
-            String text = formatText(pivotY.getValue());
+            double yWidth = Math.abs(cs.getEndY() - cs.getStartX());
+            String text = formatText(pivotY.getValue(), yWidth);
             int gap = text.length() * 8;
             int textX = getTextCoordinate(grid.centerX(), 0, getWidth(), gap);
             g.drawString(text, textX, y);
@@ -128,9 +148,10 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
         return textY;
     }
 
-    private String formatText(double value) {
+    private String formatText(double value, double realWidth) {
         DecimalFormat pattern = new DecimalFormat("#.###");
-        if (Math.abs(value) > 10_000 || Math.abs(value) < 0.001) {
+
+        if (realWidth > 10_000 || realWidth < 1) {
             pattern = new DecimalFormat("#.##E0");
         }
         return pattern.format(value);
