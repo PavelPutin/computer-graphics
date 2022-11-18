@@ -4,12 +4,18 @@ public class Model {
     private final StartPointTransformsController startPointTransformsController;
     private final CoordinateSystemGridGenerator coordinateSystemGridGenerator;
     private final PlotGenerator plotGenerator;
+    private final CurveGenerator curveGenerator;
 
     public Model() {
         startPointTransformsController = new StartPointTransformsController();
         coordinateSystemGridGenerator = new CoordinateSystemGridGenerator();
         startPointTransformsController.addStartPointPositionUpdatingListener(coordinateSystemGridGenerator);
         plotGenerator = new PlotGenerator();
+        curveGenerator = new CurveGenerator();
+    }
+
+    public CurveGenerator getCurveGenerator() {
+        return curveGenerator;
     }
 
     public PlotGenerator getPlotGenerator() {

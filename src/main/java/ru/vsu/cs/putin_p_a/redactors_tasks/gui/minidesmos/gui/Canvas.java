@@ -5,6 +5,7 @@ import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.LineDrawingAlgo
 import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.PixelSetter;
 import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.WuLineAlgorithm;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.*;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Point2d;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,18 +16,21 @@ import java.util.Map;
 public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter {
     public static final Color AXIS_COLOR = Color.BLACK;
     public static final Color GRID_LINES = Color.LIGHT_GRAY;
-    public static final Color PLOT_COLOR = Color.BLACK;
+    public static final Color PLOT_COLOR = Color.RED;
+    public static final Color CURVE_COLOR = Color.RED;
     private Graphics g;
     private LineDrawingAlgorithm lineDrawingAlgorithm = new BresenhamLineAlgorithm(this);
     private int mousePressPositionX, mousePressPositionY;
     private final StartPointTransformsController startPointTransformsController;
     private final CoordinateSystemGridGenerator coordinateSystemGridGenerator;
     private final PlotGenerator plotGenerator;
+    private final CurveGenerator curveGenerator;
 
     public Canvas(
             StartPointTransformsController startPointTransformsController,
             CoordinateSystemGridGenerator coordinateSystemGridGenerator,
-            PlotGenerator plotGenerator
+            PlotGenerator plotGenerator,
+            CurveGenerator curveGenerator
     ) {
         super();
         this.startPointTransformsController = startPointTransformsController;
@@ -34,6 +38,9 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
         coordinateSystemGridGenerator.addRasterUpdateListener(this);
         this.plotGenerator = plotGenerator;
         this.plotGenerator.addRasterUpdateListener(this);
+        this.curveGenerator = curveGenerator;
+        this.curveGenerator.addRasterUpdateListener(this);
+
         addMouseWheelListener(new MouseAdapter() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
@@ -83,6 +90,9 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
 
         int[] plotYValues = plotGenerator.plot(startPointPosition);
         drawPlot(plotYValues);
+
+        java.util.List<Point2d> points = curveGenerator.rasterPoints(startPointPosition);
+        drawCurve(points);
     }
 
     private void drawPlot(int[] plotYValues) {
@@ -157,5 +167,17 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
             pattern = new DecimalFormat("#.##E0");
         }
         return pattern.format(value);
+    }
+
+    private void drawCurve(java.util.List<Point2d> points) {
+        for (int i = 1; i < points.size(); i++) {
+            Point2d from = points.get(i - 1),
+                    to = points.get(i);
+            int x1 = from.getX().intValue(),
+                    y1 = from.getY().intValue(),
+                    x2 = to.getX().intValue(),
+                    y2 = to.getY().intValue();
+            lineDrawingAlgorithm.drawLine(x1, y1, x2, y2, CURVE_COLOR);
+        }
     }
 }
