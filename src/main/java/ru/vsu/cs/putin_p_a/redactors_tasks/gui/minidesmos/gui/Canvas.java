@@ -17,7 +17,7 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
     public static final Color AXIS_COLOR = Color.BLACK;
     public static final Color GRID_LINES = Color.LIGHT_GRAY;
     public static final Color PLOT_COLOR = Color.RED;
-    public static final Color CURVE_COLOR = Color.RED;
+    public static final Color CURVE_COLOR = Color.MAGENTA;
     private Graphics g;
     private LineDrawingAlgorithm lineDrawingAlgorithm = new BresenhamLineAlgorithm(this);
     private int mousePressPositionX, mousePressPositionY;

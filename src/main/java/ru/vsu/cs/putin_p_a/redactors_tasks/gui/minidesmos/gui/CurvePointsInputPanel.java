@@ -15,9 +15,9 @@ public class CurvePointsInputPanel extends JPanel {
     private List<PointUpdateListener> pointUpdateListenerList = new ArrayList<>();
     public CurvePointsInputPanel() {
         super();
-        add(new JLabel("Введите точки для кривых (количество точек должно быть кратно 3)"));
+        add(new JLabel("Введите точки для кривых"));
 
-        pointsInputArea = new JTextArea(5, 20);
+        pointsInputArea = new JTextArea(12, 20);
         pointsInputArea.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {

@@ -46,7 +46,7 @@ public class MiniDesmosFrame extends JFrame {
         controlPanel.add(curvePointsInputPanel);
 
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas, controlScrollPane);
-        splitPane.setDividerLocation(240);
+        splitPane.setDividerLocation(700);
         splitPane.setPreferredSize(new Dimension(800, 800));
         mainPanel.add(splitPane);
         pack();
