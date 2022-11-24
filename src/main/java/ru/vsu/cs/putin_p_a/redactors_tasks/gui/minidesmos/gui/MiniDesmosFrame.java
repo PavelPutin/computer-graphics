@@ -1,12 +1,9 @@
 package ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.gui;
 
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.parser.Parameter;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.*;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Point2d;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
 public class MiniDesmosFrame extends JFrame {
     public MiniDesmosFrame(Model model) throws HeadlessException {
@@ -25,13 +22,14 @@ public class MiniDesmosFrame extends JFrame {
         canvas.setMinimumSize(new Dimension(200, 200));
 
         JPanel controlPanel = new JPanel();
-//        controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
-        JScrollPane controlScrollPane = new JScrollPane();
-        controlScrollPane.setViewportView(controlPanel);
-        mainPanel.add(controlScrollPane);
+        controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
+        controlPanel.add(Box.createVerticalStrut(15));
+        controlPanel.setMaximumSize(new Dimension(400, getHeight()));
+        mainPanel.add(controlPanel);
 
         ParametersInputPanel parametersInputPanel = new ParametersInputPanel();
         parametersInputPanel.addParametersUpdatingListener(model.getPlotGenerator());
+        parametersInputPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         controlPanel.add(parametersInputPanel);
 
         MathFunctionParsingPanel mathFunctionParsingPanel = new MathFunctionParsingPanel(parametersInputPanel);
@@ -39,14 +37,18 @@ public class MiniDesmosFrame extends JFrame {
         mathFunctionParsingPanel.addParsingErrorListener(e -> {
             throw e;
         });
+        mathFunctionParsingPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         controlPanel.add(mathFunctionParsingPanel);
 
         CurvePointsInputPanel curvePointsInputPanel = new CurvePointsInputPanel();
         curvePointsInputPanel.addPointUpdateListener(model.getCurveGenerator());
+        curvePointsInputPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         controlPanel.add(curvePointsInputPanel);
 
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas, controlScrollPane);
-        splitPane.setDividerLocation(700);
+        controlPanel.add(Box.createVerticalGlue());
+
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas, controlPanel);
+        splitPane.setDividerLocation(600);
         splitPane.setPreferredSize(new Dimension(800, 800));
         mainPanel.add(splitPane);
         pack();

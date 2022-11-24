@@ -6,18 +6,21 @@ import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Point2d;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CurvePointsInputPanel extends JPanel {
+    public static final int ROWS = 12, COLUMNS = 9;
     private JTextArea pointsInputArea;
     private List<PointUpdateListener> pointUpdateListenerList = new ArrayList<>();
     public CurvePointsInputPanel() {
         super();
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         add(new JLabel("Введите точки для кривых"));
 
-        pointsInputArea = new JTextArea(12, 20);
+        pointsInputArea = new JTextArea(ROWS, COLUMNS);
         pointsInputArea.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -40,6 +43,7 @@ public class CurvePointsInputPanel extends JPanel {
         });
 
         JScrollPane textAreaScrollPane = new JScrollPane();
+        textAreaScrollPane.setMaximumSize(new Dimension(200, 300));
         textAreaScrollPane.setViewportView(pointsInputArea);
         add(textAreaScrollPane);
     }

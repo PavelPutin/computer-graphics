@@ -6,6 +6,7 @@ import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.parser.Parameter;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +20,14 @@ public class MathFunctionParsingPanel extends JPanel implements MathFunctionInpu
     public MathFunctionParsingPanel(ParametersInputController parametersInputController) {
         super();
         this.parametersInputController = parametersInputController;
+
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
         add(new JLabel("Введите функцию:"));
-        mathFunctionField = new JTextField();
+
+        mathFunctionField = new StyledTextField();
         add(mathFunctionField);
+
         JButton parseButton = new JButton("Ввести функцию");
         add(parseButton);
         parseButton.addActionListener(e -> {

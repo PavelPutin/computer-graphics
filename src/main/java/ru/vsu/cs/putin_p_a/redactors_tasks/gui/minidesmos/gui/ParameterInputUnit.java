@@ -23,7 +23,7 @@ public class ParameterInputUnit extends JPanel {
 
         add(new JLabel(parametersName + ":"));
         parameter = new Parameter(parametersName, BigDecimal.valueOf(DEFAULT_VALUE));
-        JTextField parameterInputField = new JTextField(String.valueOf(DEFAULT_VALUE));
+        JTextField parameterInputField = new StyledTextField(String.valueOf(DEFAULT_VALUE));
         add(parameterInputField);
         parameterInputField.getDocument().addDocumentListener(new DocumentListener() {
             @Override

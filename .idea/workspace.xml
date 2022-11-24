@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Реализовал алгоритм Ву, но он работает не очень хорошо">
+    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Мелкие изменения интерфейса">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/StyledTextField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/Canvas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/CurvePointsInputPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/CurvePointsInputPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/MathFunctionParsingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/MathFunctionParsingPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/MiniDesmosFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/MiniDesmosFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/ParameterInputUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/ParameterInputUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/StartPointPositionInfoPanel.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,6 +156,10 @@
       <workItem from="1668662281534" duration="31612000" />
       <workItem from="1668753801552" duration="5918000" />
       <workItem from="1668762205544" duration="1887000" />
+      <workItem from="1668789098098" duration="553000" />
+      <workItem from="1668968914327" duration="448000" />
+      <workItem from="1669229873348" duration="1914000" />
+      <workItem from="1669269408550" duration="1320000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1663154202254</created>
@@ -413,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668701109519</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Мелкие изменения интерфейса">
+      <created>1668789159136</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1668789159136</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +445,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Создал для удобства классы отрисоки осей координат" />
     <MESSAGE value="Провёл рефакторинг класса ArcText" />
     <MESSAGE value="Добавил угловые отступы для текста" />
     <MESSAGE value="Сделал надпись с поздравлением" />
@@ -456,7 +469,8 @@
     <MESSAGE value="Отображается график" />
     <MESSAGE value="Сделал интерактивную сетку" />
     <MESSAGE value="Сделал рисование графика с параметрами" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал рисование графика с параметрами" />
+    <MESSAGE value="Мелкие изменения интерфейса" />
+    <option name="LAST_COMMIT_MESSAGE" value="Мелкие изменения интерфейса" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -465,11 +479,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/Calculator.java</url>
           <line>24</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/MathFunctionParsingPanel.java</url>
-          <line>32</line>
-          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
