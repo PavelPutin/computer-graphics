@@ -9,6 +9,7 @@ public interface MathFunctionInputController {
 
     void notifyCreationCalculatorListeners(BasicExpression mathFunction);
     void notifyParsingErrorListeners(RuntimeException e);
+    void clearParsingErrorListeners();
     void addCreationCalculatorListener(CreationCalculatorListener listener);
     void addParsingErrorListener(ParsingErrorListener listener);
 }

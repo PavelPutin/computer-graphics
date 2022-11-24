@@ -38,7 +38,7 @@ public class Redactor2d extends JPanel {
         transformSettingsPanel.add(shapesSelectingPanel);
 
         String[] availableShapes = redactor.getAvailableShapes().keySet().toArray(new String[0]);
-        JComboBox availableShapesList = new JComboBox(availableShapes);
+        JComboBox<String> availableShapesList = new JComboBox<>(availableShapes);
         availableShapesList.setMaximumSize(SMALL);
         shapesSelectingPanel.add(availableShapesList);
 

@@ -2,11 +2,10 @@ package ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.gui;
 
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.BasicExpression;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.parser.MathFunctionParser;
-import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.parser.Parameter;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.*;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.raster_generators.plot.Calculator;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +37,7 @@ public class MathFunctionParsingPanel extends JPanel implements MathFunctionInpu
                 parametersNames.remove("x");
                 parametersInputController.updateInput(parametersNames);
                 notifyCreationCalculatorListeners(mathFunction);
+                clearParsingErrorListeners();
             } catch (RuntimeException exception) {
                 notifyParsingErrorListeners(exception);
             }
@@ -55,6 +55,13 @@ public class MathFunctionParsingPanel extends JPanel implements MathFunctionInpu
     public void notifyParsingErrorListeners(RuntimeException e) {
         for (ParsingErrorListener listener : parsingErrorListeners) {
             listener.showErrorMessage(e);
+        }
+    }
+
+    @Override
+    public void clearParsingErrorListeners() {
+        for (ParsingErrorListener listener : parsingErrorListeners) {
+            listener.clearErrorMessage();
         }
     }
 

@@ -1,13 +1,17 @@
-package ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos;
+package ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.raster_generators.coordinate_system;
 
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.utils.Rounding;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.CanvasCoordinateSystem;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.StartPointTransforms;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.StartPointTransformsUpdatingListener;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.raster_generators.RasterGenerator;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Point2d;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.AffineTransformation;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class CoordinateSystemGridGenerator extends RasterGenerator implements StartPointPositionUpdatingListener{
+public class CoordinateSystemGridGenerator extends RasterGenerator implements StartPointTransformsUpdatingListener {
     public static final int SEGMENTS_QUANTITY = 10;
 
     public CoordinateSystemGrid getCoordinateSystemGrid(StartPointTransforms startPointTransforms) {

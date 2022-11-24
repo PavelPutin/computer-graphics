@@ -5,20 +5,21 @@ import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.*;
 import javax.swing.*;
 import java.awt.*;
 
-public class MiniDesmosFrame extends JFrame {
+public class MiniDesmosFrame extends JFrame implements CurveGeneratorChangeListener {
+    private final Model model;
+    private final CurvePointsInputPanel curvePointsInputPanel;
+    private final Canvas canvas;
     public MiniDesmosFrame(Model model) throws HeadlessException {
         super();
+
+        this.model = model;
+
         this.setMinimumSize(new Dimension(200, 200));
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         add(mainPanel);
 
-        Canvas canvas = new Canvas(
-                model.startPointTransformsController(),
-                model.getCoordinateSystemGridGenerator(),
-                model.getPlotGenerator(),
-                model.getCurveGenerator()
-        );
+        canvas = new Canvas(model);
         canvas.setMinimumSize(new Dimension(200, 200));
 
         JPanel controlPanel = new JPanel();
@@ -32,16 +33,20 @@ public class MiniDesmosFrame extends JFrame {
         parametersInputPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         controlPanel.add(parametersInputPanel);
 
+        ErrorInfoPanel errorInfoPanel = new ErrorInfoPanel();
+        errorInfoPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        controlPanel.add(errorInfoPanel);
+
         MathFunctionParsingPanel mathFunctionParsingPanel = new MathFunctionParsingPanel(parametersInputPanel);
         mathFunctionParsingPanel.addCreationCalculatorListener(model.getPlotGenerator());
-        mathFunctionParsingPanel.addParsingErrorListener(e -> {
-            throw e;
-        });
+        mathFunctionParsingPanel.addParsingErrorListener(errorInfoPanel);
         mathFunctionParsingPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         controlPanel.add(mathFunctionParsingPanel);
 
-        CurvePointsInputPanel curvePointsInputPanel = new CurvePointsInputPanel();
+        curvePointsInputPanel = new CurvePointsInputPanel();
         curvePointsInputPanel.addPointUpdateListener(model.getCurveGenerator());
+        curvePointsInputPanel.addCurveGeneratorChangeListener(model);
+        curvePointsInputPanel.addCurveGeneratorChangeListener(this);
         curvePointsInputPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         controlPanel.add(curvePointsInputPanel);
 
@@ -52,5 +57,11 @@ public class MiniDesmosFrame extends JFrame {
         splitPane.setPreferredSize(new Dimension(800, 800));
         mainPanel.add(splitPane);
         pack();
+    }
+
+    @Override
+    public void changeCurveGenerator(String curveGeneratorName) {
+        model.getCurveGenerator().addRasterUpdateListener(canvas);
+        curvePointsInputPanel.addPointUpdateListener(model.getCurveGenerator());
     }
 }

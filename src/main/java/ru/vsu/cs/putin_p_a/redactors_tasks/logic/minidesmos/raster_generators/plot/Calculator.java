@@ -1,4 +1,4 @@
-package ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos;
+package ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.raster_generators.plot;
 
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.expression.BasicExpression;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.parser.Parameter;

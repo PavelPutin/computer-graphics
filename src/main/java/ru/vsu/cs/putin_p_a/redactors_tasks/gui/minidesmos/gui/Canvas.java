@@ -3,8 +3,8 @@ package ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.gui;
 import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.BresenhamLineAlgorithm;
 import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.LineDrawingAlgorithm;
 import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.PixelSetter;
-import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.WuLineAlgorithm;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.*;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.raster_generators.coordinate_system.CoordinateSystemGrid;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Point2d;
 
 import javax.swing.*;
@@ -19,27 +19,16 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
     public static final Color PLOT_COLOR = Color.RED;
     public static final Color CURVE_COLOR = Color.MAGENTA;
     private Graphics g;
+    private Model model;
     private LineDrawingAlgorithm lineDrawingAlgorithm = new BresenhamLineAlgorithm(this);
     private int mousePressPositionX, mousePressPositionY;
-    private final StartPointTransformsController startPointTransformsController;
-    private final CoordinateSystemGridGenerator coordinateSystemGridGenerator;
-    private final PlotGenerator plotGenerator;
-    private final CurveGenerator curveGenerator;
 
-    public Canvas(
-            StartPointTransformsController startPointTransformsController,
-            CoordinateSystemGridGenerator coordinateSystemGridGenerator,
-            PlotGenerator plotGenerator,
-            CurveGenerator curveGenerator
-    ) {
+    public Canvas(Model model) {
         super();
-        this.startPointTransformsController = startPointTransformsController;
-        this.coordinateSystemGridGenerator = coordinateSystemGridGenerator;
-        coordinateSystemGridGenerator.addRasterUpdateListener(this);
-        this.plotGenerator = plotGenerator;
-        this.plotGenerator.addRasterUpdateListener(this);
-        this.curveGenerator = curveGenerator;
-        this.curveGenerator.addRasterUpdateListener(this);
+        this.model = model;
+        model.getCoordinateSystemGridGenerator().addRasterUpdateListener(this);
+        model.getPlotGenerator().addRasterUpdateListener(this);
+        model.getCurveGenerator().addRasterUpdateListener(this);
 
         addMouseWheelListener(new MouseAdapter() {
             @Override
@@ -51,7 +40,7 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
                 if (rotationValue > 0) {
                     userScale = 2;
                 }
-                startPointTransformsController.updateUserScale(e.getX(), e.getY(), userScale);
+                model.getStartPointTransformsController().updateUserScale(e.getX(), e.getY(), userScale);
             }
         });
         addMouseListener(new MouseAdapter() {
@@ -66,7 +55,7 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
             @Override
             public void mouseDragged(MouseEvent e) {
                 super.mouseDragged(e);
-                startPointTransformsController.updateTranslation(mousePressPositionX, mousePressPositionY, e.getX(), e.getY());
+                model.getStartPointTransformsController().updateTranslation(mousePressPositionX, mousePressPositionY, e.getX(), e.getY());
                 mousePressPositionX = e.getX();
                 mousePressPositionY = e.getY();
             }
@@ -75,7 +64,7 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
             @Override
             public void componentResized(ComponentEvent e) {
                 super.componentResized(e);
-                startPointTransformsController.updateCanvasScale(-10, 10, getWidth(), getHeight());
+                model.getStartPointTransformsController().updateCanvasScale(-10, 10, getWidth(), getHeight());
             }
         });
     }
@@ -84,25 +73,15 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
     public void paint(Graphics g) {
         super.paint(g);
         this.g = g;
-        StartPointTransforms startPointPosition = startPointTransformsController.getCurrent();
-        CoordinateSystemGrid grid = this.coordinateSystemGridGenerator.getCoordinateSystemGrid(startPointPosition);
+        StartPointTransforms startPointPosition = model.getStartPointTransformsController().getCurrent();
+        CoordinateSystemGrid grid = model.getCoordinateSystemGridGenerator().getCoordinateSystemGrid(startPointPosition);
         drawGrid(grid);
 
-        int[] plotYValues = plotGenerator.plot(startPointPosition);
+        int[] plotYValues = model.getPlotGenerator().plot(startPointPosition);
         drawPlot(plotYValues);
 
-        java.util.List<Point2d> points = curveGenerator.rasterPoints(startPointPosition);
+        java.util.List<Point2d> points = model.getCurveGenerator().rasterPoints(startPointPosition);
         drawCurve(points);
-    }
-
-    private void drawPlot(int[] plotYValues) {
-        for (int x = 1; x < plotYValues.length; x++) {
-            int y1 = plotYValues[x - 1],
-                    y2 = plotYValues[x];
-            if (containsPixel(x - 1, y1) && containsPixel(x, y2)) {
-                lineDrawingAlgorithm.drawLine(x - 1, y1, x, y2, PLOT_COLOR);
-            }
-        }
     }
 
     @Override
@@ -124,7 +103,7 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
     }
 
     private void drawGrid(CoordinateSystemGrid grid) {
-        CanvasCoordinateSystem cs = startPointTransformsController.getCurrent().canvasCoordinateSystem();
+        CanvasCoordinateSystem cs = model.getStartPointTransformsController().getCurrent().canvasCoordinateSystem();
         for (Map.Entry<Integer, Double> pivotX : grid.verticalPivotsX().entrySet()) {
             int x = pivotX.getKey();
             lineDrawingAlgorithm.drawLine(x, 0, x, getHeight(), GRID_LINES);
@@ -167,6 +146,16 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
             pattern = new DecimalFormat("#.##E0");
         }
         return pattern.format(value);
+    }
+
+    private void drawPlot(int[] plotYValues) {
+        for (int x = 1; x < plotYValues.length; x++) {
+            int y1 = plotYValues[x - 1],
+                    y2 = plotYValues[x];
+            if (containsPixel(x - 1, y1) || containsPixel(x, y2)) {
+                lineDrawingAlgorithm.drawLine(x - 1, y1, x, y2, PLOT_COLOR);
+            }
+        }
     }
 
     private void drawCurve(java.util.List<Point2d> points) {

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StartPointTransformsController {
-    private final List<StartPointPositionUpdatingListener> listeners = new ArrayList<>();
+    private final List<StartPointTransformsUpdatingListener> listeners = new ArrayList<>();
     private StartPointTransforms current;
 
     public StartPointTransformsController() {
@@ -95,12 +95,12 @@ public class StartPointTransformsController {
         notifyListeners();
     }
 
-    public void addStartPointPositionUpdatingListener(StartPointPositionUpdatingListener listener) {
+    public void addStartPointPositionUpdatingListener(StartPointTransformsUpdatingListener listener) {
         listeners.add(listener);
     }
 
     public void notifyListeners() {
-        for (StartPointPositionUpdatingListener listener : listeners) {
+        for (StartPointTransformsUpdatingListener listener : listeners) {
             listener.startPointPositionChanged(current);
         }
     }

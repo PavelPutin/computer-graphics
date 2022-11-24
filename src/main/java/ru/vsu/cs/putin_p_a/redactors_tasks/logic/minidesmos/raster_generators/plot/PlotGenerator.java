@@ -1,10 +1,12 @@
-package ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos;
+package ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.raster_generators.plot;
 
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.math.parser.Parameter;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.*;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.raster_generators.RasterGenerator;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.raster_generators.plot.Calculator;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Point2d;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
 
 public class PlotGenerator extends RasterGenerator implements CreationCalculatorListener, ParameterUpdatingListener {
