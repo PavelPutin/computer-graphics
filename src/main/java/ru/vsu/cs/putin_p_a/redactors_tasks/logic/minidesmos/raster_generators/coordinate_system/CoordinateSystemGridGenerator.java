@@ -9,6 +9,7 @@ import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Point2d;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.transformations.AffineTransformation;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class CoordinateSystemGridGenerator extends RasterGenerator implements StartPointTransformsUpdatingListener {
@@ -28,7 +29,7 @@ public class CoordinateSystemGridGenerator extends RasterGenerator implements St
         AffineTransformation toReal = cs.getToReal();
         AffineTransformation toPixels = cs.getToPixel();
 
-        Map<Integer, Double> verticalPivotsX = new HashMap<>();
+        Map<Integer, Double> verticalPivotsX = new LinkedHashMap<>();
         int startI = startIndex(cs.getStartX(), stepX),
             endI = endIndex(cs.getEndX(), stepX);
         for (int i = startI; i <= endI; i++) {
@@ -39,7 +40,7 @@ public class CoordinateSystemGridGenerator extends RasterGenerator implements St
             verticalPivotsX.put(pixelValue, realValue);
         }
 
-        Map<Integer, Double> verticalPivotsY = new HashMap<>();
+        Map<Integer, Double> verticalPivotsY = new LinkedHashMap<>();
         startI = startIndex(cs.getStartY(), stepY);
         endI =endIndex(cs.getEndY(), stepY);
         for (int i = startI; i <= endI; i++) {

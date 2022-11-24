@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 abstract public class CurveGenerator extends RasterGenerator implements PointUpdateListener {
-    public static final int POINTS_NUMBER = 75;
+    public static final int POINTS_NUMBER = 50;
 
     private List<Point2d> points = new ArrayList<>();
 

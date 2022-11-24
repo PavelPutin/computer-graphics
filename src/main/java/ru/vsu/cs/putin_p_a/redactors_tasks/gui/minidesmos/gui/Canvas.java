@@ -5,6 +5,7 @@ import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.LineDrawingAlgo
 import ru.vsu.cs.putin_p_a.redactors_tasks.gui.minidesmos.drawer.PixelSetter;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.*;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.raster_generators.coordinate_system.CoordinateSystemGrid;
+import ru.vsu.cs.putin_p_a.redactors_tasks.logic.minidesmos.raster_generators.curves.BeziersCurveGenerator;
 import ru.vsu.cs.putin_p_a.redactors_tasks.logic.shapes2d.Point2d;
 
 import javax.swing.*;
@@ -77,7 +78,7 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
         CoordinateSystemGrid grid = model.getCoordinateSystemGridGenerator().getCoordinateSystemGrid(startPointPosition);
         drawGrid(grid);
 
-        int[] plotYValues = model.getPlotGenerator().plot(startPointPosition);
+        java.util.List<Point2d> plotYValues = model.getPlotGenerator().plot(startPointPosition, grid);
         drawPlot(plotYValues);
 
         java.util.List<Point2d> points = model.getCurveGenerator().rasterPoints(startPointPosition);
@@ -148,14 +149,12 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
         return pattern.format(value);
     }
 
-    private void drawPlot(int[] plotYValues) {
-        for (int x = 1; x < plotYValues.length; x++) {
-            int y1 = plotYValues[x - 1],
-                    y2 = plotYValues[x];
-            if (containsPixel(x - 1, y1) || containsPixel(x, y2)) {
-                lineDrawingAlgorithm.drawLine(x - 1, y1, x, y2, PLOT_COLOR);
-            }
-        }
+    private void drawPlot(java.util.List<Point2d> plotYValues) {
+//        System.out.println("draw plot: " + plotYValues.size());
+//        for (Point2d point2d : plotYValues) {
+//            System.out.println(point2d.getX().doubleValue() + " " + point2d.getY().doubleValue());
+//        }
+        drawCurve(plotYValues);
     }
 
     private void drawCurve(java.util.List<Point2d> points) {
@@ -166,7 +165,10 @@ public class Canvas extends JPanel implements RasterUpdateListener, PixelSetter 
                     y1 = from.getY().intValue(),
                     x2 = to.getX().intValue(),
                     y2 = to.getY().intValue();
-            lineDrawingAlgorithm.drawLine(x1, y1, x2, y2, CURVE_COLOR);
+
+            if (containsPixel(x1, y1) || containsPixel(x2, y2)) {
+                lineDrawingAlgorithm.drawLine(x1, y1, x2, y2, CURVE_COLOR);
+            }
         }
     }
 }
