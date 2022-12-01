@@ -37,20 +37,11 @@ public class PlotGenerator extends RasterGenerator implements CreationCalculator
 
         List<Point2d> points = new ArrayList<>(width * CurveGenerator.POINTS_NUMBER);
 
-        List<BigDecimal> xValues = new ArrayList<>(coordinateSystemGrid.verticalPivotsX().size() + 2);
-        xValues.add(BigDecimal.valueOf(cs.getStartX()));
-        for (Integer value : coordinateSystemGrid.verticalPivotsX().keySet()) {
-            Point2d xPoint = new Point2d(BigDecimal.valueOf(value), BigDecimal.ZERO, BigDecimal.ONE, BigDecimal.ZERO);
-            xPoint.transform(cs.getToReal());
-            xValues.add(xPoint.getX());
-        }
-        xValues.add(BigDecimal.valueOf(cs.getEndX()));
 
-        for (BigDecimal p : xValues) {
-            System.out.println(p.doubleValue());
-        }
-
-        for (BigDecimal xValue : xValues) {
+        double step = Math.abs(cs.getEndX() - cs.getStartX()) / 100;
+        for (double x = cs.getStartX(); x <= cs.getEndX() + step; x += step) {
+            BigDecimal xValue = BigDecimal.valueOf(x);
+            System.out.println(x);
             BigDecimal calculationResult = calculator.calc(xValue, parameterList);
             Point2d resultPoint = new Point2d(xValue, calculationResult, BigDecimal.ONE, BigDecimal.ZERO);
 
@@ -65,15 +56,21 @@ public class PlotGenerator extends RasterGenerator implements CreationCalculator
                 BigDecimal derivativeX1 = Derivative.calcDerivative(calculator, x1, y1, parameterList);
                 BigDecimal derivativeX2 = Derivative.calcDerivative(calculator, x2, y2, parameterList);
                 BigDecimal d = derivativeX2.subtract(derivativeX1);
-                BigDecimal dx = x2.multiply(derivativeX2)
-                                  .subtract(y2)
-                                  .subtract(x1.multiply(derivativeX1))
-                                  .add(y1);
-                BigDecimal px = dx.divide(d, MathConstants.DIVISION_SCALE, RoundingMode.HALF_UP);
 
-                BigDecimal dy = derivativeX1.multiply(x2.multiply(derivativeX2).subtract(y2))
-                        .subtract(derivativeX2.multiply(x1.multiply(derivativeX1).subtract(y1)));
-                BigDecimal py = dy.divide(d, MathConstants.DIVISION_SCALE, RoundingMode.HALF_UP);
+                BigDecimal px = x2.add(x1).divide(BigDecimal.valueOf(2), MathConstants.DIVISION_SCALE, RoundingMode.HALF_UP);
+                BigDecimal py = y2.add(y1).divide(BigDecimal.valueOf(2), MathConstants.DIVISION_SCALE, RoundingMode.HALF_UP);
+
+                if (!(d.doubleValue() < MathConstants.PRECISION)) {
+                    BigDecimal dx = x2.multiply(derivativeX2)
+                            .subtract(y2)
+                            .subtract(x1.multiply(derivativeX1))
+                            .add(y1);
+                    px = dx.divide(d, MathConstants.DIVISION_SCALE, RoundingMode.HALF_UP);
+
+                    BigDecimal dy = derivativeX1.multiply(x2.multiply(derivativeX2).subtract(y2))
+                            .subtract(derivativeX2.multiply(x1.multiply(derivativeX1).subtract(y1)));
+                    py = dy.divide(d, MathConstants.DIVISION_SCALE, RoundingMode.HALF_UP);
+                }
 
                 Point2d pivot = new Point2d(px, py, BigDecimal.ONE, BigDecimal.ZERO);
                 for (int times = 0; times < 2; times++) {
@@ -82,9 +79,6 @@ public class PlotGenerator extends RasterGenerator implements CreationCalculator
             }
             points.add(resultPoint);
         }
-//        for (Point2d p : points) {
-//            System.out.println(p.getX().doubleValue() + " " + p.getY().doubleValue());
-//        }
         BeziersCurveGenerator cg = new BeziersCurveGenerator();
         cg.updatePoints(points);
         List<Point2d> result = cg.rasterPoints(startPointTransforms).stream().filter(point ->

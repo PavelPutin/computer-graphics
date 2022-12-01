@@ -9,6 +9,7 @@ import java.util.List;
 
 public class BsplainCurveGenerator extends CurveGenerator{
 
+    @Override
     public List<Point2d> rasterPoints(StartPointTransforms startPointTransforms) {
         CanvasCoordinateSystem cs = startPointTransforms.canvasCoordinateSystem();
         List<Point2d> pixelPoints = new ArrayList<>();

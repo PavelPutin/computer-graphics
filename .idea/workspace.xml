@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Реализовал все способы рисования кривых и добавил интерфейс выбора метода рисования кривой">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/math/utils/Derivative.java" afterDir="false" />
+    <list default="true" id="2d2e1465-b507-4189-a722-b62bbf7a6170" name="Changes" comment="Сделал кривые Безье">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/raster_generators/coordinate_system/CoordinateSystemGridGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/raster_generators/coordinate_system/CoordinateSystemGridGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/raster_generators/curves/CurveGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/raster_generators/curves/CurveGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/raster_generators/curves/BsplainCurveGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/raster_generators/curves/BsplainCurveGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/raster_generators/curves/HermiteCurveGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/raster_generators/curves/HermiteCurveGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/raster_generators/plot/PlotGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/raster_generators/plot/PlotGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +21,6 @@
       <list>
         <option value="Record" />
         <option value="Interface" />
-        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -80,7 +78,7 @@
     </configuration>
     <configuration name="ApplicationMiniDesmos" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.putin_p_a.ApplicationMiniDesmos" />
-      <module name="ComputerGraphics" />
+      <module name="computer-graphics" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.vsu.cs.putin_p_a.*" />
@@ -491,14 +489,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/logic/minidesmos/raster_generators/plot/Calculator.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/ErrorInfoPanel.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="9" />
+          <url>file://$PROJECT_DIR$/src/main/java/ru/vsu/cs/putin_p_a/redactors_tasks/gui/minidesmos/gui/MathFunctionParsingPanel.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

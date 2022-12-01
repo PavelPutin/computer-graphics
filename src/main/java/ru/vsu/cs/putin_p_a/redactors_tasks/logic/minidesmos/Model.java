@@ -15,7 +15,7 @@ public class Model implements CurveGeneratorChangeListener {
         coordinateSystemGridGenerator = new CoordinateSystemGridGenerator();
         startPointTransformsController.addStartPointPositionUpdatingListener(coordinateSystemGridGenerator);
         plotGenerator = new PlotGenerator();
-        curveGenerator = new BsplainCurveGenerator();
+        curveGenerator = new BeziersCurveGenerator();
     }
 
     public CurveGenerator getCurveGenerator() {
