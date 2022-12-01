@@ -78,7 +78,7 @@
     </configuration>
     <configuration name="ApplicationMiniDesmos" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.vsu.cs.putin_p_a.ApplicationMiniDesmos" />
-      <module name="computer-graphics" />
+      <module name="ComputerGraphics" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.vsu.cs.putin_p_a.*" />
